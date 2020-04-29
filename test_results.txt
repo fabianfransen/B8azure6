@@ -1,0 +1,790 @@
+
+Pubmed-entry ::= {
+  pmid 31694657,
+  medent {
+    em std {
+      year 2019,
+      month 11,
+      day 8,
+      hour 6,
+      minute 0
+    },
+    cit {
+      title {
+        name "Linkage and exome analysis implicate multiple genes in
+ non-syndromic intellectual disability in a large Swedish family."
+      },
+      authors {
+        names std {
+          {
+            name ml "Lindholm Carlstrom E",
+            affil str "Department of Immunology, Genetics and Pathology,
+ Science for Life Laboratory Uppsala, Uppsala University, Box 815, SE-751 08,
+ Uppsala, Sweden. eva.lindholm@igp.uu.se."
+          },
+          {
+            name ml "Halvardson J",
+            affil str "Department of Immunology, Genetics and Pathology,
+ Science for Life Laboratory Uppsala, Uppsala University, Box 815, SE-751 08,
+ Uppsala, Sweden."
+          },
+          {
+            name ml "Etemadikhah M",
+            affil str "Department of Immunology, Genetics and Pathology,
+ Science for Life Laboratory Uppsala, Uppsala University, Box 815, SE-751 08,
+ Uppsala, Sweden."
+          },
+          {
+            name ml "Wetterberg L",
+            affil str "Department of Clinical Neuroscience (CNS), K8,
+ Karolinska Institutet, Stockholm, Sweden."
+          },
+          {
+            name ml "Gustavson KH",
+            affil str "Department of Immunology, Genetics and Pathology,
+ Science for Life Laboratory Uppsala, Uppsala University, Box 815, SE-751 08,
+ Uppsala, Sweden."
+          },
+          {
+            name ml "Feuk L",
+            affil str "Department of Immunology, Genetics and Pathology,
+ Science for Life Laboratory Uppsala, Uppsala University, Box 815, SE-751 08,
+ Uppsala, Sweden."
+          }
+        }
+      },
+      from journal {
+        title {
+          iso-jta "BMC Med Genomics",
+          ml-jta "BMC Med Genomics",
+          issn "1755-8794",
+          name "BMC medical genomics"
+        },
+        imp {
+          date std {
+            year 2019,
+            month 11,
+            day 6
+          },
+          volume "12",
+          issue "1",
+          pages "156",
+          language "eng",
+          pubstatus epublish,
+          history {
+            {
+              pubstatus received,
+              date std {
+                year 2019,
+                month 2,
+                day 11
+              }
+            },
+            {
+              pubstatus accepted,
+              date std {
+                year 2019,
+                month 10,
+                day 18
+              }
+            },
+            {
+              pubstatus other,
+              date std {
+                year 2019,
+                month 11,
+                day 8,
+                hour 6,
+                minute 0
+              }
+            },
+            {
+              pubstatus pubmed,
+              date std {
+                year 2019,
+                month 11,
+                day 7,
+                hour 6,
+                minute 0
+              }
+            },
+            {
+              pubstatus medline,
+              date std {
+                year 2020,
+                month 4,
+                day 3,
+                hour 6,
+                minute 0
+              }
+            }
+          }
+        }
+      },
+      ids {
+        pubmed 31694657,
+        doi "10.1186/s12920-019-0606-4",
+        pii "10.1186/s12920-019-0606-4",
+        other {
+          db "pmc",
+          tag str "PMC6833288"
+        },
+        other {
+          db "ELocationID doi",
+          tag str "10.1186/s12920-019-0606-4"
+        }
+      }
+    },
+    abstract "BACKGROUND: Non-syndromic intellectual disability is genetically
+ heterogeneous with dominant, recessive and complex forms of inheritance. We
+ have performed detailed genetic studies in a large multi-generational Swedish
+ family, including several members diagnosed with non-syndromic intellectual
+ disability. Linkage analysis was performed on 22 family members, nine
+ affected with mild to moderate intellectual disability and 13 unaffected
+ family members. METHODS: Family members were analyzed with Affymetrix
+ Genome-Wide Human SNP Array 6.0 and the genetic data was used to detect copy
+ number variation and to perform genome wide linkage analysis with the SNP
+ High Throughput Linkage analysis system and the Merlin software. For the
+ exome sequencing, the samples were prepared using the Sure Select Human All
+ Exon Kit (Agilent Technologies, Santa Clara, CA, USA) and sequenced using the
+ Ion Proton System. Validation of identified variants was performed with
+ Sanger sequencing. RESULTS: The linkage analysis results indicate that
+ intellectual disability in this family is genetically heterogeneous, with
+ suggestive linkage found on chromosomes 1q31-q41, 4q32-q35, 6p25 and
+ 14q24-q31 (LOD scores of 2.4, simulated p-value of 0.000003 and a simulated
+ genome-wide p-value of 0.06). Exome sequencing was then performed in 14
+ family members and 7 unrelated individuals from the same region. The analysis
+ of coding variation revealed a pathogenic and candidate variants in different
+ branches of the family. In three patients we find a known homozygous
+ pathogenic mutation in the Homo sapiens solute carrier family 17 member 5
+ (SLC17A5), causing Salla disease. We also identify a deletion overlapping
+ KDM3B and a duplication overlapping MAP3K4 and AGPAT4, both overlapping
+ variants previously reported in developmental disorders. CONCLUSIONS: DNA
+ samples from the large family analyzed in this study were initially collected
+ based on a hypothesis that affected members shared a major genetic risk
+ factor. Our results show that a complex phenotype such as mild intellectual
+ disability in large families from genetically isolated populations may show
+ considerable genetic heterogeneity.",
+    mesh {
+      {
+        term "1-Acylglycerol-3-Phosphate O-Acyltransferase",
+        qual {
+          {
+            subh "genetics"
+          }
+        }
+      },
+      {
+        term "DNA Copy Number Variations"
+      },
+      {
+        term "Exome",
+        qual {
+          {
+            mp TRUE,
+            subh "genetics"
+          }
+        }
+      },
+      {
+        mp TRUE,
+        term "Genetic Linkage"
+      },
+      {
+        term "Humans"
+      },
+      {
+        term "Intellectual Disability",
+        qual {
+          {
+            mp TRUE,
+            subh "genetics"
+          },
+          {
+            subh "pathology"
+          }
+        }
+      },
+      {
+        term "Jumonji Domain-Containing Histone Demethylases",
+        qual {
+          {
+            subh "genetics"
+          }
+        }
+      },
+      {
+        term "Karyotyping"
+      },
+      {
+        term "MAP Kinase Kinase Kinase 4",
+        qual {
+          {
+            subh "genetics"
+          }
+        }
+      },
+      {
+        term "Organic Anion Transporters",
+        qual {
+          {
+            subh "genetics"
+          }
+        }
+      },
+      {
+        term "Pedigree"
+      },
+      {
+        term "Polymorphism, Single Nucleotide"
+      },
+      {
+        term "Sweden"
+      },
+      {
+        term "Symporters",
+        qual {
+          {
+            subh "genetics"
+          }
+        }
+      },
+      {
+        term "Whole Exome Sequencing"
+      }
+    },
+    substance {
+      {
+        type nameonly,
+        name "Organic Anion Transporters"
+      },
+      {
+        type nameonly,
+        name "Symporters"
+      },
+      {
+        type nameonly,
+        name "sialic acid transport proteins"
+      },
+      {
+        type ec,
+        cit "1.14.11.-",
+        name "Jumonji Domain-Containing Histone Demethylases"
+      },
+      {
+        type ec,
+        cit "1.14.11.-",
+        name "KDM3B protein, human"
+      },
+      {
+        type ec,
+        cit "2.3.1.51",
+        name "1-Acylglycerol-3-Phosphate O-Acyltransferase"
+      },
+      {
+        type ec,
+        cit "2.7.11.25",
+        name "MAP Kinase Kinase Kinase 4"
+      },
+      {
+        type ec,
+        cit "2.7.11.25",
+        name "MAP3K4 protein, human"
+      }
+    },
+    pmid 31694657,
+    pub-type {
+      "Journal Article",
+      "Research Support, Non-U.S. Gov't"
+    },
+    status medline
+  }
+}
+
+
+
+Pubmed-entry ::= {
+  pmid 30929739,
+  medent {
+    em std {
+      year 2019,
+      month 4,
+      day 2,
+      hour 6,
+      minute 0
+    },
+    cit {
+      title {
+        name "De Novo and Inherited Pathogenic Variants in KDM3B Cause
+ Intellectual Disability, Short Stature, and Facial Dysmorphism."
+      },
+      authors {
+        names std {
+          {
+            name ml "Diets IJ",
+            affil str "Department of Human Genetics, Radboud University
+ Medical Center, 6525GA Nijmegen, the Netherlands."
+          },
+          {
+            name ml "van der Donk R",
+            affil str "Department of Human Genetics, Radboud University
+ Medical Center, 6525GA Nijmegen, the Netherlands; Princess Maxima Center for
+ Pediatric Oncology, 3584CS Utrecht, the Netherlands."
+          },
+          {
+            name ml "Baltrunaite K",
+            affil str "Division of Endocrinology, Cincinnati Center for Growth
+ Disorders, Cincinnati Children's Hospital Medical Center, Department of
+ Pediatrics, University of Cincinnati College of Medicine, Cincinnati, OH
+ 45229, USA."
+          },
+          {
+            name ml "Waanders E",
+            affil str "Princess Maxima Center for Pediatric Oncology, 3584CS
+ Utrecht, the Netherlands."
+          },
+          {
+            name ml "Reijnders MRF",
+            affil str "Department of Human Genetics, Radboud University
+ Medical Center, 6525GA Nijmegen, the Netherlands; Department of Clinical
+ Genetics, Maastricht University Medical Center, 6229HX Maastricht, the
+ Netherlands."
+          },
+          {
+            name ml "Dingemans AJM",
+            affil str "Department of Human Genetics, Radboud University
+ Medical Center, 6525GA Nijmegen, the Netherlands."
+          },
+          {
+            name ml "Pfundt R",
+            affil str "Department of Human Genetics, Radboud University
+ Medical Center, 6525GA Nijmegen, the Netherlands."
+          },
+          {
+            name ml "Vulto-van Silfhout AT",
+            affil str "Department of Human Genetics, Radboud University
+ Medical Center, 6525GA Nijmegen, the Netherlands."
+          },
+          {
+            name ml "Wiel L",
+            affil str "Department of Human Genetics, Radboud University
+ Medical Center, 6525GA Nijmegen, the Netherlands; Centre for Molecular and
+ Biomolecular Informatics, Radboud Institute for Molecular Life Sciences,
+ Radboud University Medical Center, 6525GA Nijmegen, the Netherlands."
+          },
+          {
+            name ml "Gilissen C",
+            affil str "Department of Human Genetics, Radboud University
+ Medical Center, 6525GA Nijmegen, the Netherlands; Centre for Molecular and
+ Biomolecular Informatics, Radboud Institute for Molecular Life Sciences,
+ Radboud University Medical Center, 6525GA Nijmegen, the Netherlands."
+          },
+          {
+            name ml "Thevenon J",
+            affil str "Centre de Genetique et Centre de Reference Anomalies du
+ Developpement et Syndromes Malformatifs, Hopital d'Enfants, Centre
+ Hospitalier Universitaire de Dijon, 21079 Dijon, France; Equipe Genetique des
+ Anomalies du Developpement, Universite de Bourgogne-France Comte, 21070
+ Dijon, France."
+          },
+          {
+            name ml "Perrin L",
+            affil str "Centre de Genetique et Centre de Reference Anomalies du
+ Developpement et Syndromes Malformatifs, Hopital d'Enfants, Centre
+ Hospitalier Universitaire de Dijon, 21079 Dijon, France."
+          },
+          {
+            name ml "Afenjar A",
+            affil str "APHP, Departement de Genetique et Embryologie Medicale,
+ Centre de Reference Deficiences Intellectuelles de Causes Rares, GRC n
+ degrees 19, ConCer-LD, Hopital Armand Trousseau, 75012 Paris, France."
+          },
+          {
+            name ml "Nava C",
+            affil str "APHP, Hopital Pitie-Salpetriere, Departement de
+ Genetique, 75013, Paris, France; Sorbonne Universites, Institut du Cerveau et
+ de la Moelle epiniere, ICM, Institut National de la Sante et de la Recherche
+ Medicale U1127, Centre National de la Recherche Scientifique UMR 7225, 75013,
+ Paris, France."
+          },
+          {
+            name ml "Keren B",
+            affil str "APHP, Hopital Pitie-Salpetriere, Departement de
+ Genetique, 75013, Paris, France."
+          },
+          {
+            name ml "Bartz S",
+            affil str "Division of Endocrinology, Children's Hospital of
+ Colorado, Aurora, CO 80045, USA."
+          },
+          {
+            name ml "Peri B",
+            affil str "Division of Endocrinology, Children's Hospital of
+ Colorado, Aurora, CO 80045, USA."
+          },
+          {
+            name ml "Beunders G",
+            affil str "Department of Clinical Genetics, VU University Medical
+ Center, 1081HV Amsterdam, the Netherlands."
+          },
+          {
+            name ml "Verbeek N",
+            affil str "Department of Genetics, University Medical Center
+ Utrecht, 3508AB Utrecht, the Netherlands."
+          },
+          {
+            name ml "van Gassen K",
+            affil str "Department of Genetics, University Medical Center
+ Utrecht, 3508AB Utrecht, the Netherlands."
+          },
+          {
+            name ml "Thiffault I",
+            affil str "Center for Pediatric Genomic Medicine, Children's Mercy
+ Hospital, Kansas City, MO 66211, USA; Department of Pathology and Laboratory
+ Medicine, Children's Mercy Hospital, Kansas City, MO 66211, USA; University
+ of Missouri, Kansas City School of Medicine, Kansas City, MO 66211, USA."
+          },
+          {
+            name ml "Cadieux-Dion M",
+            affil str "Center for Pediatric Genomic Medicine, Children's Mercy
+ Hospital, Kansas City, MO 66211, USA; Department of Pathology and Laboratory
+ Medicine, Children's Mercy Hospital, Kansas City, MO 66211, USA."
+          },
+          {
+            name ml "Huerta-Saenz L",
+            affil str "Children's Mercy Hospital, Kansas City, MO 66211, USA;
+ Division of Pediatric Endocrinology and Diabetes, Department of Pediatrics,
+ Penn State Hershey Children's Hospital, Hershey, PA 17033, USA."
+          },
+          {
+            name ml "Wagner M",
+            affil str "Institute of Human Genetics, Technische Universitat
+ Munchen, 80333 Munich, Germany; Institute for Neurogenomics, Helmholtz
+ Zentrum Munchen, 85764 Neuherberg, Germany; Institute for Human Genetics,
+ Helmholtz Zentrum Munchen, 85764 Neuherberg, Germany."
+          },
+          {
+            name ml "Konstantopoulou V",
+            affil str "Department of Pediatrics and Adolescent Medicine,
+ Medical University of Vienna, 1090 Vienna, Austria."
+          },
+          {
+            name ml "Vodopiutz J",
+            affil str "Department of Pediatrics and Adolescent Medicine,
+ Medical University of Vienna, 1090 Vienna, Austria."
+          },
+          {
+            name ml "Griese M",
+            affil str "Dr. von Hauner Children's Hospital, Division of
+ Pediatric Pneumology, University Hospital Munich, German Center for Lung
+ Research, 80333 Munich, Germany."
+          },
+          {
+            name ml "Boel A",
+            affil str "Center for Medical Genetics, Ghent University Hospital,
+ 9000 Ghent, Belgium."
+          },
+          {
+            name ml "Callewaert B",
+            affil str "Center for Medical Genetics, Ghent University Hospital,
+ 9000 Ghent, Belgium."
+          },
+          {
+            name ml "Brunner HG",
+            affil str "Department of Human Genetics, Radboud University
+ Medical Center, 6525GA Nijmegen, the Netherlands; Donders Institute for
+ Brain, Cognition and Behavior, Radboud University Nijmegen, 6525GA Nijmegen,
+ the Netherlands; Department of Clinical Genetics and School for Oncology &
+ Developmental Biology (GROW), Maastricht University Medical Center, 6202AZ
+ Maastricht, the Netherlands."
+          },
+          {
+            name ml "Kleefstra T",
+            affil str "Department of Human Genetics, Radboud University
+ Medical Center, 6525GA Nijmegen, the Netherlands; Donders Institute for
+ Brain, Cognition and Behavior, Radboud University Nijmegen, 6525GA Nijmegen,
+ the Netherlands."
+          },
+          {
+            name ml "Hoogerbrugge N",
+            affil str "Department of Human Genetics, Radboud University
+ Medical Center, 6525GA Nijmegen, the Netherlands."
+          },
+          {
+            name ml "de Vries BBA",
+            affil str "Department of Human Genetics, Radboud University
+ Medical Center, 6525GA Nijmegen, the Netherlands."
+          },
+          {
+            name ml "Hwa V",
+            affil str "Division of Endocrinology, Cincinnati Center for Growth
+ Disorders, Cincinnati Children's Hospital Medical Center, Department of
+ Pediatrics, University of Cincinnati College of Medicine, Cincinnati, OH
+ 45229, USA."
+          },
+          {
+            name ml "Dauber A",
+            affil str "Division of Endocrinology, Cincinnati Center for Growth
+ Disorders, Cincinnati Children's Hospital Medical Center, Department of
+ Pediatrics, University of Cincinnati College of Medicine, Cincinnati, OH
+ 45229, USA; Division of Endocrinology, Children's National Health System,
+ Washington, DC 20010, USA."
+          },
+          {
+            name ml "Hehir-Kwa JY",
+            affil str "Princess Maxima Center for Pediatric Oncology, 3584CS
+ Utrecht, the Netherlands."
+          },
+          {
+            name ml "Kuiper RP",
+            affil str "Department of Human Genetics, Radboud University
+ Medical Center, 6525GA Nijmegen, the Netherlands; Princess Maxima Center for
+ Pediatric Oncology, 3584CS Utrecht, the Netherlands."
+          },
+          {
+            name ml "Jongmans MCJ",
+            affil str "Department of Human Genetics, Radboud University
+ Medical Center, 6525GA Nijmegen, the Netherlands; Princess Maxima Center for
+ Pediatric Oncology, 3584CS Utrecht, the Netherlands; Department of Genetics,
+ University Medical Center Utrecht, 3508AB Utrecht, the Netherlands.
+ Electronic address: m.c.j.jongmans-3@umcutrecht.nl."
+          }
+        }
+      },
+      from journal {
+        title {
+          iso-jta "Am. J. Hum. Genet.",
+          ml-jta "Am J Hum Genet",
+          issn "1537-6605",
+          name "American journal of human genetics"
+        },
+        imp {
+          date std {
+            year 2019,
+            month 4,
+            day 4
+          },
+          volume "104",
+          issue "4",
+          pages "758-766",
+          language "eng",
+          pubstatus ppublish,
+          history {
+            {
+              pubstatus received,
+              date std {
+                year 2018,
+                month 12,
+                day 19
+              }
+            },
+            {
+              pubstatus accepted,
+              date std {
+                year 2019,
+                month 2,
+                day 21
+              }
+            },
+            {
+              pubstatus pubmed,
+              date std {
+                year 2019,
+                month 4,
+                day 2,
+                hour 6,
+                minute 0
+              }
+            },
+            {
+              pubstatus medline,
+              date std {
+                year 2020,
+                month 2,
+                day 6,
+                hour 6,
+                minute 0
+              }
+            },
+            {
+              pubstatus other,
+              date std {
+                year 2019,
+                month 4,
+                day 2,
+                hour 6,
+                minute 0
+              }
+            }
+          }
+        }
+      },
+      ids {
+        pubmed 30929739,
+        pii "S0002-9297(19)30068-0",
+        doi "10.1016/j.ajhg.2019.02.023",
+        other {
+          db "pmc",
+          tag str "PMC6451728"
+        },
+        other {
+          db "ELocationID pii",
+          tag str "S0002-9297(19)30068-0"
+        },
+        other {
+          db "ELocationID doi",
+          tag str "10.1016/j.ajhg.2019.02.023"
+        }
+      }
+    },
+    abstract "By using exome sequencing and a gene matching approach, we
+ identified de novo and inherited pathogenic variants in KDM3B in 14 unrelated
+ individuals and three affected parents with varying degrees of intellectual
+ disability (ID) or developmental delay (DD) and short stature. The
+ individuals share additional phenotypic features that include feeding
+ difficulties in infancy, joint hypermobility, and characteristic facial
+ features such as a wide mouth, a pointed chin, long ears, and a low
+ columella. Notably, two individuals developed cancer, acute myeloid leukemia
+ and Hodgkin lymphoma, in childhood. KDM3B encodes for a histone demethylase
+ and is involved in H3K9 demethylation, a crucial part of chromatin
+ modification required for transcriptional regulation. We identified missense
+ and truncating variants, suggesting that KDM3B haploinsufficiency is the
+ underlying mechanism for this syndrome. By using a hybrid facial-recognition
+ model, we show that individuals with a pathogenic variant in KDM3B have a
+ facial gestalt, and that they show significant facial similarity compared to
+ control individuals with ID. In conclusion, pathogenic variants in KDM3B
+ cause a syndrome characterized by ID, short stature, and facial dysmorphism.",
+    mesh {
+      {
+        term "Body Height"
+      },
+      {
+        term "Child"
+      },
+      {
+        term "Craniofacial Abnormalities",
+        qual {
+          {
+            mp TRUE,
+            subh "genetics"
+          }
+        }
+      },
+      {
+        term "Developmental Disabilities",
+        qual {
+          {
+            mp TRUE,
+            subh "genetics"
+          }
+        }
+      },
+      {
+        term "Dwarfism",
+        qual {
+          {
+            mp TRUE,
+            subh "genetics"
+          }
+        }
+      },
+      {
+        term "Exome"
+      },
+      {
+        term "Face"
+      },
+      {
+        term "Female"
+      },
+      {
+        term "Genetic Association Studies"
+      },
+      {
+        mp TRUE,
+        term "Genetic Variation"
+      },
+      {
+        term "Germ-Line Mutation"
+      },
+      {
+        term "Haploinsufficiency"
+      },
+      {
+        term "Histones",
+        qual {
+          {
+            subh "chemistry"
+          }
+        }
+      },
+      {
+        term "Humans"
+      },
+      {
+        term "Intellectual Disability",
+        qual {
+          {
+            mp TRUE,
+            subh "genetics"
+          }
+        }
+      },
+      {
+        term "Jumonji Domain-Containing Histone Demethylases",
+        qual {
+          {
+            mp TRUE,
+            subh "genetics"
+          }
+        }
+      },
+      {
+        term "Male"
+      },
+      {
+        term "Musculoskeletal Abnormalities",
+        qual {
+          {
+            mp TRUE,
+            subh "genetics"
+          }
+        }
+      },
+      {
+        term "Mutation, Missense"
+      },
+      {
+        term "Phenotype"
+      }
+    },
+    substance {
+      {
+        type nameonly,
+        name "Histones"
+      },
+      {
+        type ec,
+        cit "1.14.11.-",
+        name "Jumonji Domain-Containing Histone Demethylases"
+      },
+      {
+        type ec,
+        cit "1.14.11.-",
+        name "KDM3B protein, human"
+      }
+    },
+    idnum {
+      "R01 HD078592/HD/NICHD NIH HHS"
+    },
+    pmid 30929739,
+    pub-type {
+      "Journal Article",
+      "Research Support, N.I.H., Extramural",
+      "Research Support, Non-U.S. Gov't"
+    },
+    status medline
+  }
+}
+
+
