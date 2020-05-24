@@ -88,22 +88,40 @@
                             <tr>
                                 <td width="100"> &nbsp;</td>
                                 <td width="400">
-                                    <textarea id="myTextarea" cols="50" rows="5" name="myTextarea"></textarea>
+                                    <p2>PubMed query:</p2>
+                                    <textarea id="myTextarea" cols="65" rows="5" name="myTextarea"></textarea>
                                 </td>
+                                <td width="100"> </td>
+                            </tr>
+                            <tr>
+                                <td width="100"> &nbsp;</td>
+                                <td width="400">
+                                    <p2>Date (dd/mm/yyyy):</p2>
+                                    <input type="text" name="year" value="{{year}}">
+                                    <br>
+                                    <p2>Gene:</p2>
+                                    <input type="text" name="gene" value="{{gene}}">
+                                </td>
+                                <td width="100"> </td>
+                            </tr>
+                            <tr>
+                                <td width="100"></td>
                                 <td width="100">
+                                    <a href="http://www.google.com" target="_parent"><button>Click me !</button></a>
+
                                     <div id="formsubmitbutton">
-                                        <input type="submit" name="submitter" value="Submit Button"
+                                        <input type="submit" name="submitter" value="Submit"
                                                onclick="ButtonClicked()">
                                     </div>
                                     <div id="buttonreplacement" style="margin-left:30px; display:none;">
-                                        <img src="/static/images/wait.gif" alt="loading...">
+                                        <img src="/static/images/wait2.gif" alt="loading...">
                                     </div>
                                     {#                                    <button type="submit">Search</button>#}
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3" valign="top" height="600" align="center">
-                                    <p2>Found data with the searchwords: {{ zoekwoord | safe }}</p2>
+                                <td colspan="3" valign="top" align="center">
+                                    <p2>Found data with the search query: {{ zoekwoord | safe }}</p2>
                                     <br>
                                     {{ teruggave | safe }}
                                 </td>
