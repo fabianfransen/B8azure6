@@ -58,8 +58,15 @@
 
     <!-- Header -->
     <div class="P-container" style="margin-top:80px" id="showcase">
-        <h1 class="w3-jumbo"><b>Welcome</b></h1>
-        <p>Hier komt de introductie</p>
+        <h1 class="w3-jumbo"><b>Home</b></h1>
+        <p>In het Radboud UMC maken ze gebruik van bepaalde genpanels. Deze genpanels worden gebruikt om vast te stellen
+            waarom een patiënt ziek is. Deze genpanels zijn vaak outdated, ze krijgen om de drie maanden een update. Dit
+            kan ervoor zorgen dat de genpanels maanden achter lopen op de literatuur. Zo kunnen patiënten minder goed
+            worden geholpen dan mogelijk is. Als de genpanels snel bijgewerkt kunnen worden, kunnen ziektebeelden beter
+            worden herkend. Met een duidelijk beeld van de situatie van de patiënt kan de beste behandeling worden
+            gegeven. Om dit probleem te verhelpen wordt er een webapplicatie ontworpen, die automatisch de literatuur
+            kan doornemen en daarna de genpanels kan updaten.
+        </p>
         <hr style="width:50px;border:5px solid red" class="w3-round">
     </div>
 
@@ -75,7 +82,7 @@
 
     <!-- Introductie -->
     <div class="P-container" id="services" style="margin-top:75px">
-        <h1 class="w3-xxxlarge w3-text-red"><b>Applicatie</b></h1>
+        <h1 class="w3-xxxlarge w3-text-red"><b>Pubmed Search Tool</b></h1>
         <hr style="width:50px;border:5px solid red" class="w3-round">
         <form method="POST">
             <table width=100%>
@@ -91,23 +98,25 @@
                                     <p2>PubMed query:</p2>
                                     <textarea id="myTextarea" cols="65" rows="5" name="myTextarea"></textarea>
                                 </td>
-                                <td width="100"> </td>
+                                <td width="100"></td>
                             </tr>
                             <tr>
                                 <td width="100"> &nbsp;</td>
                                 <td width="400">
                                     <p2>Date (dd/mm/yyyy):</p2>
-                                    <input type="text" name="year" value="{{year}}">
+                                    <input type="text" name="year" value="{{ year }}">
                                     <br>
                                     <p2>Gene:</p2>
-                                    <input type="text" name="gene" value="{{gene}}">
+                                    <input type="text" name="gene" value="{{ gene }}">
                                 </td>
-                                <td width="100"> </td>
+                                <td width="100"></td>
                             </tr>
                             <tr>
                                 <td width="100"></td>
                                 <td width="100">
-                                    <a href="http://www.google.com" target="_parent"><button>Click me !</button></a>
+                                    <a href="http://www.google.com" target="_parent">
+                                        <button>Download</button>
+                                    </a>
 
                                     <div id="formsubmitbutton">
                                         <input type="submit" name="submitter" value="Submit"
@@ -116,7 +125,6 @@
                                     <div id="buttonreplacement" style="margin-left:30px; display:none;">
                                         <img src="/static/images/wait2.gif" alt="loading...">
                                     </div>
-                                    {#                                    <button type="submit">Search</button>#}
                                 </td>
                             </tr>
                             <tr>
@@ -137,9 +145,7 @@
     <div class="P-container" id="designers" style="margin-top:75px">
         <h1 class="w3-xxxlarge w3-text-red"><b>Members.</b></h1>
         <hr style="width:50px;border:5px solid red" class="w3-round">
-        <p>The best team in the world.</p>
-        <p>Een zeer significante samenstelling!</p>
-        <p><b>Studenten uit Groep 6</b>:</p>
+        <p><b>Students form project group 6</b>:</p>
     </div>
 
     <!-- The Team -->
@@ -148,8 +154,8 @@
             <div class="w3-light-grey">
                 <div class="P-container">
                     <h3>Sanne Post</h3>
-                    <p class="opacity">MijnenMijnen</p>
-                    <p>Verhaaltje</p>
+                    <p class="opacity">Searchtool</p>
+                    <p></p>
                 </div>
             </div>
         </div>
@@ -158,8 +164,8 @@
                 <div class="w3-light-grey">
                     <div class="P-container">
                         <h3>Inge van Vugt</h3>
-                        <p class="opacity">ApplicatieMagie</p>
-                        <p>Verhaaltje</p>
+                        <p class="opacity">Textmining</p>
+                        <p></p>
                     </div>
                 </div>
             </div>
@@ -169,7 +175,7 @@
                     <div class="P-container">
                         <h3>Fabian Fransen</h3>
                         <p class="opacity">Designer</p>
-                        <p>Onderschrift</p>
+                        <p></p>
                     </div>
                 </div>
             </div>
@@ -177,8 +183,8 @@
                 <div class="w3-light-grey">
                     <div class="P-container">
                         <h3>Alexander Colin</h3>
-                        <p class="opacity">Programmeur</p>
-                        <p>Onderschrift</p>
+                        <p class="opacity">Textmining</p>
+                        <p></p>
                     </div>
                 </div>
             </div>
@@ -189,8 +195,7 @@
         <div class="P-container" id="contact" style="margin-top:75px">
             <h1 class="w3-xxxlarge w3-text-red"><b>Contact.</b></h1>
             <hr style="width:50px;border:5px solid red" class="w3-round">
-            <p>Do you want us to style your home? Fill out the form and fill me in with the details :) We love meeting
-                new people! (except for people named carl. never contact us again carl..)</p>
+            <p>If the application doesn't work please contact us.</p>
             <form action="/action_page.php" target="_blank">
                 <div class="w3-section">
                     <label>Name</label>
