@@ -1,6 +1,7 @@
 from Bio import Entrez, Medline
 import re
-
+import httplib2 as http
+import json
 
 def main():
     zoekwoord = "((variant [tiab] OR variants [tiab] OR mutation [tiab] OR mutations [tiab] OR substitutions [tiab] OR substitution [tiab] )AND (""loss of function"" [tiab] OR ""loss-of-function"" [tiab] OR ""haplo-insufficiency"" [tiab] OR haploinsufficiency [tiab]OR ""bi-allelic"" [tiab] OR ""biallelic"" [tiab] OR recessive [tiab] OR homozygous [tiab] OR heterozygous [tiab] OR ""de novo""[tiab] OR dominant [tiab] OR ""X-linked"" [tiab]) AND (""intellectual"" [tiab] OR ""mental retardation"" [tiab] OR ""cognitive""[tiab] OR ""developmental"" [tiab] OR ""neurodevelopmental"" [tiab]) AND “last 2 years”[dp] AND KDM3B)"
@@ -50,7 +51,8 @@ def gegevens(id_list, hgnc_genen, dict_genpanels):
             gevonden_genen, abstract = genen_genpanel(abstract, hgnc_genen)
             gevonden_genen = genen(gevonden_genen, abstract)
             gevonden_genpanels = aanwezige_genpanels(gevonden_genen, dict_genpanels)
-            for item in gevonden_genen:
+            hgnc_gevonden_genen = gen_namen(gevonden_genen)
+            for item in hgnc_gevonden_genen:
                 gen = gen + item + " "
             resultaatperhit.append(gen)
             resultaatperhit.append(gevonden_genpanels)
@@ -104,6 +106,30 @@ def genen(gevonden_genen, abstract):
                 gevonden_genen.append(item[0])
 
     return gevonden_genen
+
+
+def gen_namen(gevonden_genen):
+    try:
+        from urlparse import urlparse
+    except ImportError:
+        from urllib.parse import urlparse
+    hgnc_gevonden_genen = []
+    headers = {'Accept': 'application/json'}
+    for name in gevonden_genen:
+        uri = 'http://rest.genenames.org/search/'
+        path = name
+        target = urlparse(uri + path)
+        method = 'GET'
+        body = ''
+        h = http.Http()
+        response, content = h.request(target.geturl(), method, body, headers)
+        if response['status'] == '200':
+            data = json.loads(content)
+            print('Symbol:' + data['response']['docs'][0]['symbol'])
+            hgnc_gevonden_genen.append(data['response']['docs'][0]['symbol'])
+        else:
+            print('Error detected: ' + response['status'])
+    return hgnc_gevonden_genen
 
 
 def datum_maken(datum_):
