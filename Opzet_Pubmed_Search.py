@@ -6,8 +6,9 @@ def main():
     zoekwoord = "((variant [tiab] OR variants [tiab] OR mutation [tiab] OR mutations [tiab] OR substitutions [tiab] OR substitution [tiab] )AND (""loss of function"" [tiab] OR ""loss-of-function"" [tiab] OR ""haplo-insufficiency"" [tiab] OR haploinsufficiency [tiab]OR ""bi-allelic"" [tiab] OR ""biallelic"" [tiab] OR recessive [tiab] OR homozygous [tiab] OR heterozygous [tiab] OR ""de novo""[tiab] OR dominant [tiab] OR ""X-linked"" [tiab]) AND (""intellectual"" [tiab] OR ""mental retardation"" [tiab] OR ""cognitive""[tiab] OR ""developmental"" [tiab] OR ""neurodevelopmental"" [tiab]) AND “last 2 years”[dp] AND KDM3B)"
     count = search_count(zoekwoord)
     id_list = search_artikel(zoekwoord, count)
-    hgnc_genen = genpanel()
-    resultaat = gegevens(id_list, hgnc_genen)
+    hgnc_genen, dict_genpanels = genpanel()
+    resultaat = gegevens(id_list, hgnc_genen, dict_genpanels)
+    print(resultaat)
 
 
 def search_count(zoekwoord):
@@ -29,7 +30,7 @@ def search_artikel(zoekwoord, count):
     return id_list
 
 
-def gegevens(id_list, hgnc_genen):
+def gegevens(id_list, hgnc_genen, dict_genpanels):
     resultaat = []
     for i in range(len(id_list)):
         handle = Entrez.efetch(db="pubmed", id=id_list[i], rettype="medline")
@@ -39,13 +40,20 @@ def gegevens(id_list, hgnc_genen):
             gen = ""
             resultaatperhit.append(record['PMID'])
             resultaatperhit.append(record['TI'])
-            resultaatperhit.append(record['DP'])
+            datum_nieuw = dag(str(record['DP']))
+            datum_compleet = datum(datum_nieuw)
+            resultaatperhit.append(datum_compleet)
+            datum_nieuw = datum_maken(str(record['LR']))
+            datum_compleet = datum(datum_nieuw)
+            resultaatperhit.append(datum_compleet)
             abstract = record['AB']
             gevonden_genen, abstract = genen_genpanel(abstract, hgnc_genen)
             gevonden_genen = genen(gevonden_genen, abstract)
+            gevonden_genpanels = aanwezige_genpanels(gevonden_genen, dict_genpanels)
             for item in gevonden_genen:
                 gen = gen + item + " "
             resultaatperhit.append(gen)
+            resultaatperhit.append(gevonden_genpanels)
             resultaat.append(resultaatperhit)
 
     return resultaat
@@ -54,12 +62,16 @@ def gegevens(id_list, hgnc_genen):
 def genpanel():
     hgnc_genen = []
     bestand = open("GenPanels_merged_DG-2.17.0.txt", 'r')
+    dict_genpanels = {}
     bestand.readline()
     for line in bestand:
-        hgnc_genen.append(line.split("\t")[0])
+        line = line.split("\t")
+        hgnc_genen.append(line[0])
+        dict = {line[0]: line[1]}
+        dict_genpanels.update(dict)
     bestand.close()
 
-    return hgnc_genen
+    return hgnc_genen, dict_genpanels
 
 
 def genen_genpanel(abstract, hgnc_genen):
@@ -92,6 +104,58 @@ def genen(gevonden_genen, abstract):
                 gevonden_genen.append(item[0])
 
     return gevonden_genen
+
+
+def datum_maken(datum_):
+    datum_nieuw = ""
+    count = 0
+    string = ""
+    for cijfer in datum_:
+        string = string + cijfer
+        count += 1
+        if count == 4:
+            datum_nieuw = datum_nieuw + string
+            string = ""
+        if count == 6:
+            datum_nieuw = datum_nieuw + " " + string
+            string = ""
+        if count == 8:
+            datum_nieuw = datum_nieuw + " " + string
+
+    return datum_nieuw
+
+
+def dag(date):
+    dicht_dagen = {"1": "01", "2": "02", "3": "03", "4": "04", "5": "05", "6": "06", "7": "07", "8": "08", "9": "09"}
+    dagen = date.split(" ")
+    dag_ = dicht_dagen.get(dagen[2])
+    datum_nieuw = dagen[0] + " " + dagen[1] + " " + dag_
+
+    return datum_nieuw
+
+
+def datum(date):
+    dict_maanden = {"01": "Jan", "02": "Feb", "03": "Mrt", "04": "Apr", "05": "Mei", "06": "Jun", "07": "Jul",
+                    "08": "Aug", "09": "Sep", "10": "Okt", "11": "Nov", "12": "Dec"}
+    datum_ = date.split(" ")
+    maand = dict_maanden.get(datum_[1])
+
+    if maand is None:
+        datum_compleet = datum_[2] + "-" + datum_[1] + "-" + datum_[0]
+    else:
+        datum_compleet = datum_[2] + "-" + maand + "-" + datum_[0]
+
+    return datum_compleet
+
+
+def aanwezige_genpanels(gevonden_genen, dict_genpanels):
+    gevonden_genpanels = ""
+    for gen in gevonden_genen:
+        if dict_genpanels.get(gen) is not None:
+            gevonden_genpanels = gevonden_genpanels + dict_genpanels.get(gen) + "\n"
+
+    gevonden_genpanels = gevonden_genpanels.replace("\n", "")
+    return gevonden_genpanels
 
 
 main()
