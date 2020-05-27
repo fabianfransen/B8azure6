@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<link rel="stylesheet" href="../static/sortable-tables.min.css?version=1">
+<script src="../static/sortable-tables.min.js?version=1"></script>
 <style>
     body, h1, h2, h3, h4, h5 {
         font-family: "Poppins", sans-serif
@@ -28,7 +30,7 @@
 <body>
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;"
+<nav class="w3-sidebar w3-blue w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;"
      id="mySidebar"><br>
     <a href="javascript:void(0)" onclick="Page_close()" class="w3-button w3-hide-large w3-display-topleft"
        style="width:100%;font-size:22px">Close Menu</a>
@@ -39,13 +41,13 @@
         <a href="#" onclick="Page_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
         <a href="#services" onclick="Page_close()" class="w3-bar-item w3-button w3-hover-white">Pubmed Search Tool</a>
         <a href="#designers" onclick="Page_close()" class="w3-bar-item w3-button w3-hover-white">Members</a>
-        <a href="#contact" onclick="Page_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+        <a href="#contact" onclick="Page_close()" class="w3-bar-item w3-button w3-hover-white">Information</a>
     </div>
 </nav>
 
 <!-- Top menu on small screens -->
-<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
-    <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="Page_open()">☰</a>
+<header class="w3-container w3-top w3-hide-large w3-blue w3-xlarge w3-padding">
+    <a href="javascript:void(0)" class="w3-button w3-blue w3-margin-right" onclick="Page_open()">☰</a>
     <span>Pubmed Search Tool</span>
 </header>
 
@@ -58,16 +60,22 @@
 
     <!-- Header -->
     <div class="P-container" style="margin-top:80px" id="showcase">
-        <h1 class="w3-jumbo"><b>Home</b></h1>
-        <p>In het Radboud UMC maken ze gebruik van bepaalde genpanels. Deze genpanels worden gebruikt om vast te stellen
-            waarom een patiënt ziek is. Deze genpanels zijn vaak outdated, ze krijgen om de drie maanden een update. Dit
-            kan ervoor zorgen dat de genpanels maanden achter lopen op de literatuur. Zo kunnen patiënten minder goed
-            worden geholpen dan mogelijk is. Als de genpanels snel bijgewerkt kunnen worden, kunnen ziektebeelden beter
-            worden herkend. Met een duidelijk beeld van de situatie van de patiënt kan de beste behandeling worden
-            gegeven. Om dit probleem te verhelpen wordt er een webapplicatie ontworpen, die automatisch de literatuur
-            kan doornemen en daarna de genpanels kan updaten.
-        </p>
-        <hr style="width:50px;border:5px solid red" class="w3-round">
+        <h1 class="w3-jumbo"><b>Welcome</b></h1>
+        <!-- <p>Op deze webpagina vindt u een Pubmed Search Tool, een applicatie die in staat is om de literatuur van Pubmed<br> af te zoeken naar bepaalde zoekwoorden. De zoekwoorden zijn
+        input van de gebruiker. De applicatie is in staat<br> genen te identificeren die gelinkt zijn aan bepaalde aandoeningen. De applicatie maakt gebruik van<br> data/text-mining technieken
+        voor het doorzoeken van de database. Deze applicatie is gemaakt in opdracht van <br> het Radboud UMC. Het doel van deze applicatie is dat biologen makkelijk de literatuur kunnen doornemen,
+        zonder <br>dat ze handmatig alle artikelen moeten controleren. De applicatie is zo ontworpen, dat deze te gebruiken is zonder<br> enige voorkennis of uiteg.
+      </p> -->
+        <img src="https://library.maastrichtuniversity.nl/wp-content/uploads/2013/02/pubmed.jpg"
+             style="float: right; margin: 5px 20px 0 0;"/>
+        <br><br><br><br><br>
+        <br><br><br><br><br>
+
+        In this application you will find a tool able to scan trough the (recent) literature<br> of the Pubmed Database.
+        The tool will search for <br>keywords that you can input in the application below.
+        The tool <br>identifies genes that are linked to the keywords and show the results below.
+        <hr>
+
     </div>
 
 
@@ -80,10 +88,11 @@
         </div>
     </div>
 
-    <!-- Introductie -->
+    <!-- PubMed -->
     <div class="P-container" id="services" style="margin-top:75px">
-        <h1 class="w3-xxxlarge w3-text-red"><b>Pubmed Search Tool</b></h1>
-        <hr style="width:50px;border:5px solid red" class="w3-round">
+        <h1 class="w3-xxxlarge w3-text-dark-grey"><b>Pubmed Search Tool</b></h1>
+        <hr style="width:50px;border:5px solid rgb(102, 102, 150)" class="w3-round">
+
         <form method="POST">
             <table width=100%>
                 <tr>
@@ -103,7 +112,7 @@
                             <tr>
                                 <td width="100"> &nbsp;</td>
                                 <td width="400">
-                                    <p2>Date (dd/mm/yyyy):</p2>
+                                    <p2>Start date (yyyy):</p2>
                                     <input type="text" name="year" value="{{ year }}">
                                     <br>
                                     <p2>Gene:</p2>
@@ -114,9 +123,7 @@
                             <tr>
                                 <td width="100"></td>
                                 <td width="100">
-                                    <a href="http://www.google.com" target="_parent">
-                                        <button>Download</button>
-                                    </a>
+
 
                                     <div id="formsubmitbutton">
                                         <input type="submit" name="submitter" value="Submit"
@@ -133,6 +140,8 @@
                                     <br>
                                     {{ teruggave | safe }}
                                 </td>
+                                <td>
+                                </td>
                             </tr>
                         </table>
                     </td>
@@ -143,9 +152,11 @@
 
     <!-- Designers -->
     <div class="P-container" id="designers" style="margin-top:75px">
-        <h1 class="w3-xxxlarge w3-text-red"><b>Members.</b></h1>
-        <hr style="width:50px;border:5px solid red" class="w3-round">
-        <p><b>Students form project group 6</b>:</p>
+        <hr>
+
+        <h1 class="w3-xxxlarge w3-text-dark-grey"><b>Members</b></h1>
+        <hr style="width:50px;border:5px solid rgb(102, 102, 150)" class="w3-round">
+        <p>This application was developed by student of the HAN. Every member specialized in a certain part. </p>
     </div>
 
     <!-- The Team -->
@@ -154,170 +165,128 @@
             <div class="w3-light-grey">
                 <div class="P-container">
                     <h3>Sanne Post</h3>
-                    <p class="opacity">Searchtool</p>
-                    <p></p>
+                    <p class="opacity">Bio-informatician / application</p>
+                    <p>S.Post5@student.han.nl</p>
+                    <p>Verhaaltje</p>
                 </div>
             </div>
         </div>
-        <div class="w3-row-padding w3-grayscale">
-            <div class="w3-col m4 w3-margin-bottom">
-                <div class="w3-light-grey">
-                    <div class="P-container">
-                        <h3>Inge van Vugt</h3>
-                        <p class="opacity">Textmining</p>
-                        <p></p>
-                    </div>
+        <div class="w3-col m4 w3-margin-bottom">
+            <div class="w3-light-grey">
+                <div class="P-container">
+                    <h3>Inge van Vugt</h3>
+                    <p class="opacity">Bio-informatician / text-mining</p>
+                    <p>IMA.vanVugt@student.han.nl</p>
+                    <p>Verhaaltje</p>
                 </div>
             </div>
-
-            <div class="w3-col m4 w3-margin-bottom">
-                <div class="w3-light-grey">
-                    <div class="P-container">
-                        <h3>Fabian Fransen</h3>
-                        <p class="opacity">Designer</p>
-                        <p></p>
-                    </div>
+        </div>
+    </div>
+    <div class="w3-row-padding w3-grayscale">
+        <div class="w3-col m4 w3-margin-bottom">
+            <div class="w3-light-grey">
+                <div class="P-container">
+                    <h3>Fabian Fransen</h3>
+                    <p class="opacity">Bio-informatician / website</p>
+                    <p>F.Fransen1@student.han.nl</p>
+                    <p>quote</p>
                 </div>
             </div>
-            <div class="w3-col m4 w3-margin-bottom">
-                <div class="w3-light-grey">
-                    <div class="P-container">
-                        <h3>Alexander Colin</h3>
-                        <p class="opacity">Textmining</p>
-                        <p></p>
-                    </div>
+        </div>
+        <div class="w3-col m4 w3-margin-bottom">
+            <div class="w3-light-grey">
+                <div class="P-container">
+                    <h3>Alexander Colin</h3>
+                    <p class="opacity">Bio-informatician / text-mining</p>
+                    <p>RMA.Colin@student.han.nl</p>
+                    <p>Onderschrift</p>
                 </div>
             </div>
-            <div></div>
         </div>
 
-        <!-- Contact -->
-        <div class="P-container" id="contact" style="margin-top:75px">
-            <h1 class="w3-xxxlarge w3-text-red"><b>Contact.</b></h1>
-            <hr style="width:50px;border:5px solid red" class="w3-round">
-            <p>If the application doesn't work please contact us.</p>
-            <form action="/action_page.php" target="_blank">
-                <div class="w3-section">
-                    <label>Name</label>
-                    <input class="w3-input w3-border" type="text" name="Name" required>
-                </div>
-                <div class="w3-section">
-                    <label>Email</label>
-                    <input class="w3-input w3-border" type="text" name="Email" required>
-                </div>
-                <div class="w3-section">
-                    <label>Message</label>
-                    <input class="w3-input w3-border" type="text" name="Message" required>
-                </div>
-                <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send Message
-                </button>
-            </form>
-        </div>
-
-        <!-- End page content -->
+        <div></div>
     </div>
 
-    <!--Container -->
-    <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p
-            class="w3-right">Powered by <a href="https://specials.han.nl/sites/biocentre/" title="HAN" target="_blank"
-                                           class="w3-hover-opacity">HAN</a></p></div>
 
-    <script>
+    <!-- Contact -->
+    <div class="P-container" id="contact" style="margin-top:75px">
+        <hr>
 
-        function ButtonClicked() {
-            document.getElementById("formsubmitbutton").style.display = "none"; // to undisplay
-            document.getElementById("buttonreplacement").style.display = ""; // to display
-            return true;
-        }
+        <h1 class="w3-xxxlarge w3-text-dark-grey"><b>Information</b></h1>
+        <hr style="width:50px;border:5px solid rgb(102, 102, 150)" class="w3-round">
+        <p>To use the application, type in the keywords like the example below. <br><br>
+            You will get the results below the search bar. These will include the genes found in the literature.
+            The results will be displayed in a table, with the colums; Gene id, Date, Name, Hits. The results will refer
+            to the articles of interest.
+        </p>
 
-        var FirstLoading = true;
+    </div>
 
-        function RestoreSubmitButton() {
-            if (FirstLoading) {
-                FirstLoading = false;
-                return;
-            }
-            document.getElementById("formsubmitbutton").style.display = ""; // to display
-            document.getElementById("buttonreplacement").style.display = "none"; // to undisplay
-        }
-
-        // To disable restoring submit button, disable or delete next line.
-        document.onfocus = RestoreSubmitButton;
-
-        function sortTable(n) {
-            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-            table = document.getElementById("myTable");
-            switching = true;
-            //Set the sorting direction to ascending:
-            dir = "asc";
-            /*Make a loop that will continue until
-            no switching has been done:*/
-            while (switching) {
-                //start by saying: no switching is done:
-                switching = false;
-                rows = table.rows;
-                /*Loop through all table rows (except the
-                first, which contains table headers):*/
-                for (i = 1; i < (rows.length - 1); i++) {
-                    //start by saying there should be no switching:
-                    shouldSwitch = false;
-                    /*Get the two elements you want to compare,
-                    one from current row and one from the next:*/
-                    x = rows[i].getElementsByTagName("TD")[n];
-                    y = rows[i + 1].getElementsByTagName("TD")[n];
-                    /*check if the two rows should switch place,
-                    based on the direction, asc or desc:*/
-                    if (dir == "asc") {
-                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                            //if so, mark as a switch and break the loop:
-                            shouldSwitch = true;
-                            break;
-                        }
-                    } else if (dir == "desc") {
-                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                            //if so, mark as a switch and break the loop:
-                            shouldSwitch = true;
-                            break;
-                        }
-                    }
-                }
-                if (shouldSwitch) {
-                    /*If a switch has been marked, make the switch
-                    and mark that a switch has been done:*/
-                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                    switching = true;
-                    //Each time a switch is done, increase this count by 1:
-                    switchcount++;
-                } else {
-                    /*If no switching has been done AND the direction is "asc",
-                    set the direction to "desc" and run the while loop again.*/
-                    if (switchcount == 0 && dir == "asc") {
-                        dir = "desc";
-                        switching = true;
-                    }
-                }
-            }
-        }
-
-        // Script to open and close sidebar
-        function Page_open() {
-            document.getElementById("mySidebar").style.display = "block";
-            document.getElementById("myOverlay").style.display = "block";
-        }
-
-        function Page_close() {
-            document.getElementById("mySidebar").style.display = "none";
-            document.getElementById("myOverlay").style.display = "none";
-        }
-
-        // Modal Image Gallery
-        function onClick(element) {
-            document.getElementById("img01").src = element.src;
-            document.getElementById("modal01").style.display = "block";
-            var captionText = document.getElementById("caption");
-            captionText.innerHTML = element.alt;
-        }
-    </script>
+    <!-- End page content -->
 </div>
+
+<!--Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">
+    Powered by <a href="https://specials.han.nl/sites/biocentre/" title="HAN" target="_blank" class="w3-hover-opacity">HAN</a>
+</p></div>
+
+<script>
+
+    function ButtonClicked() {
+        document.getElementById("formsubmitbutton").style.display = "none"; // to undisplay
+        document.getElementById("buttonreplacement").style.display = ""; // to display
+        return true;
+    }
+
+    var FirstLoading = true;
+
+    function RestoreSubmitButton() {
+        if (FirstLoading) {
+            FirstLoading = false;
+            return;
+        }
+        document.getElementById("formsubmitbutton").style.display = ""; // to display
+        document.getElementById("buttonreplacement").style.display = "none"; // to undisplay
+    }
+
+    // To disable restoring submit button, disable or delete next line.
+    document.onfocus = RestoreSubmitButton;
+
+
+    // Script to open and close sidebar
+    function Page_open() {
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function Page_close() {
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("myOverlay").style.display = "none";
+    }
+
+    // Modal Image Gallery
+    function onClick(element) {
+        document.getElementById("img01").src = element.src;
+        document.getElementById("modal01").style.display = "block";
+        var captionText = document.getElementById("caption");
+        captionText.innerHTML = element.alt;
+    }
+
+    function replaceAll(string, search, replace) {
+        return string.split(search).join(replace);
+    }
+
+    function exportToExcel(elem) {
+        var table = document.getElementById("ResultTable");
+        var html = table.outerHTML;
+        html = replaceAll(html, '>-<', '>0<');
+        var url = 'data:application/vnd.ms-excel,' + escape(html); // Set your html table into url
+        elem.setAttribute("href", url);
+        elem.setAttribute("download", "export.xls"); // Choose the file name
+        return false;
+    }
+
+</script>
+
 </body>
 </html>

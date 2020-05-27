@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, send_file
 from Bio import Entrez, Medline
 import re
+import datetime
 
 app = Flask(__name__)
 
@@ -18,47 +19,63 @@ def page():
     year = request.form["year"]
     gene = request.form["gene"]
     # print(searchword)
-    print(gene)
-    print(year)
     zoekwoord = request.form["myTextarea"]
-    print(zoekwoord)
-    count = search_count(zoekwoord)
-    id_list = search_artikel(zoekwoord, count, year)
-    hgnc_genen = genpanel()
-    resultaat = gegevens(id_list, hgnc_genen)
-    print(resultaat)
-    teruggave = ("   <table id=\"myTable\" style=\"width:777px; height: 400px;\">"
+    count, zoekterm = search_count(zoekwoord, year, gene)
+    id_list = search_artikel(zoekterm, count)
+    hgnc_genen, dict_genpanels = genpanel()
+    resultaat = gegevens(id_list, hgnc_genen, dict_genpanels)
+    teruggave = ("   <table id=\"ResultTable\" style=\"width:777px; height: 400px;\" class=\"sortable-table\">"
+                 + "   <thead>\n"
                  + "   <tr>\n"
-                 + "   <th onclick=\"sortTable(0)\"><p1>ID</p1></th>\n"
-                 + "   <th onclick=\"sortTable(1)\"><p1>Title</p1></th>\n"
-                 + "   <th onclick=\"sortTable(2)\"><p1>Date</p1></th>\n"
-                 + "   <th onclick=\"sortTable(3)\"><p1>Gene</p1></th>\n"
-                 + "   </tr>")
+                 + "   <th ><p1>ID</p1></th>\n"
+                 + "   <th><p1>Title</p1></th>\n"
+                 + "   <th ><p1>Date</p1></th>\n"
+                 + "   <th ><p1>Gene</p1></th>\n"
+                 + "   </tr>"
+                 + "   </thead>")
     for a in resultaat:
         teruggave = teruggave + "<tr>"
         teruggave = teruggave + "<td>" \
-                                  "<a href = \"https://pubmed.ncbi.nlm.nih.gov/" + str(a[0]) + "\">" \
-                                  "" + str(a[0]) + "</a></td>"
+                                "<a href = \"https://pubmed.ncbi.nlm.nih.gov/" + str(a[0]) + "\" target=\"_blank\">" \
+                                                                                             "" + str(
+            a[0]) + "</a></td>"
         teruggave = teruggave + "<td><p2>" + str(a[1]) + "</p2></td>"
         teruggave = teruggave + "<td><p2>" + str(a[2]) + "</p2></td>"
         teruggave = teruggave + "<td><p2>" + str(a[3]) + "</p2></td>"
         teruggave = teruggave + "</tr>"
 
+    teruggave = teruggave + "</table>"
+    teruggave = teruggave + "<tr> <td colspan=4> <hr> <a id=\"downloadLink\" onclick=\"exportToExcel(this)\" style=\"cursor" \
+                            ": pointer;\"> <img src=\"../static/images/exelimage.jpeg\" onclick=\"exportToExcel(this)\" " \
+                            "title=\"Exporteer naar Excel.\"> Download for Excel <img" \
+                            " src=\"../static/images/exelimage.jpeg\" onclick=\"exportToExcel(this)\" " \
+                            "title=\"Exporteer naar Excel.\"> </a> </td> </tr>"
+
     return render_template("page.html", zoekwoord=zoekwoord, teruggave=teruggave, year=year, gene=gene)
 
 
-def search_count(zoekwoord):
+def search_count(zoekwoord, year, gene):
+    x = datetime.datetime.now()
+    jaar = x.strftime("%Y")
+    if year == "":
+        zoekterm = zoekwoord + " AND 1950:{} [dp]".format(jaar)
+    else:
+        zoekterm = zoekwoord + " AND {}:{} [dp]".format(year, jaar)
+    ingevulde_genen = str(gene).split(" ")
+    if len(gene) != 0:
+        for gen in ingevulde_genen:
+            zoekterm = zoekterm + " AND {}".format(gen)
     Entrez.email = "Your.Name.Here@example.org"
-    handle = Entrez.esearch(db="nucleotide", term=zoekwoord, idtype="acc")
+    handle = Entrez.esearch(db="nucleotide", term=zoekterm, idtype="acc")
     record = Entrez.read(handle)
 
     count = int(record['Count'])
 
-    return count
+    return count, zoekterm
 
 
-def search_artikel(zoekwoord, count, year):
-    handle = Entrez.esearch(db="pubmed", term=zoekwoord, retmax=count, mindate=year)
+def search_artikel(zoekterm, count):
+    handle = Entrez.esearch(db="pubmed", term=zoekterm, retmax=count)
     record = Entrez.read(handle)
 
     id_list = record['IdList']
@@ -66,7 +83,7 @@ def search_artikel(zoekwoord, count, year):
     return id_list
 
 
-def gegevens(id_list, hgnc_genen):
+def gegevens(id_list, hgnc_genen, dict_genpanels):
     resultaat = []
     for i in range(len(id_list)):
         handle = Entrez.efetch(db="pubmed", id=id_list[i], rettype="medline")
@@ -76,13 +93,21 @@ def gegevens(id_list, hgnc_genen):
             gen = ""
             resultaatperhit.append(record['PMID'])
             resultaatperhit.append(record['TI'])
-            resultaatperhit.append(record['DP'])
+            print("DP: " + record['DP'])
+            datum_nieuw = dag(str(record['DP']))
+            datum_compleet = datum(datum_nieuw)
+            resultaatperhit.append(datum_compleet)
+            datum_nieuw = datum_maken(str(record['LR']))
+            datum_compleet = datum(datum_nieuw)
+            resultaatperhit.append(datum_compleet)
             abstract = record['AB']
             gevonden_genen, abstract = genen_genpanel(abstract, hgnc_genen)
             gevonden_genen = genen(gevonden_genen, abstract)
+            gevonden_genpanels = aanwezige_genpanels(gevonden_genen, dict_genpanels)
             for item in gevonden_genen:
                 gen = gen + item + " "
             resultaatperhit.append(gen)
+            resultaatperhit.append(gevonden_genpanels)
             resultaat.append(resultaatperhit)
 
     return resultaat
@@ -91,12 +116,16 @@ def gegevens(id_list, hgnc_genen):
 def genpanel():
     hgnc_genen = []
     bestand = open("GenPanels_merged_DG-2.17.0.txt", 'r')
+    dict_genpanels = {}
     bestand.readline()
     for line in bestand:
-        hgnc_genen.append(line.split("\t")[0])
+        line = line.split("\t")
+        hgnc_genen.append(line[0])
+        dict = {line[0]: line[1]}
+        dict_genpanels.update(dict)
     bestand.close()
 
-    return hgnc_genen
+    return hgnc_genen, dict_genpanels
 
 
 def genen_genpanel(abstract, hgnc_genen):
@@ -130,7 +159,58 @@ def genen(gevonden_genen, abstract):
 
     return gevonden_genen
 
-@app.route('/download')
-def download_file():
-    p = "output.png"
-    return send_file(p)
+
+def datum_maken(datum_):
+    datum_nieuw = ""
+    count = 0
+    string = ""
+    for cijfer in datum_:
+        string = string + cijfer
+        count += 1
+        if count == 4:
+            datum_nieuw = datum_nieuw + string
+            string = ""
+        if count == 6:
+            datum_nieuw = datum_nieuw + " " + string
+            string = ""
+        if count == 8:
+            datum_nieuw = datum_nieuw + " " + string
+
+    return datum_nieuw
+
+
+def dag(date):
+    print(date)
+    dicht_dagen = {"1": "01", "2": "02", "3": "03", "4": "04", "5": "05", "6": "06", "7": "07", "8": "08", "9": "09"}
+    dagen = date.split(" ")
+    dag_ = dicht_dagen.get(dagen[2])
+    if dag_ is None:
+        datum_nieuw = dagen[0] + " " + dagen[1] + " " + dagen[2]
+    else:
+        datum_nieuw = dagen[0] + " " + dagen[1] + " " + dag_
+
+    return datum_nieuw
+
+
+def datum(date):
+    dict_maanden = {"01": "Jan", "02": "Feb", "03": "Mrt", "04": "Apr", "05": "Mei", "06": "Jun", "07": "Jul",
+                    "08": "Aug", "09": "Sep", "10": "Okt", "11": "Nov", "12": "Dec"}
+    datum_ = date.split(" ")
+    maand = dict_maanden.get(datum_[1])
+
+    if maand is None:
+        datum_compleet = datum_[2] + "-" + datum_[1] + "-" + datum_[0]
+    else:
+        datum_compleet = datum_[2] + "-" + maand + "-" + datum_[0]
+
+    return datum_compleet
+
+
+def aanwezige_genpanels(gevonden_genen, dict_genpanels):
+    gevonden_genpanels = ""
+    for gen in gevonden_genen:
+        if dict_genpanels.get(gen) is not None:
+            gevonden_genpanels = gevonden_genpanels + dict_genpanels.get(gen) + "\n"
+
+    gevonden_genpanels = gevonden_genpanels.replace("\n", "")
+    return gevonden_genpanels
