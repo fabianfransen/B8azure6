@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, send_file
 from Bio import Entrez, Medline
 import re
+import json
+import httplib2 as http
 import datetime
 
 app = Flask(__name__)
@@ -24,12 +26,14 @@ def page():
     id_list = search_artikel(zoekterm, count)
     hgnc_genen, dict_genpanels = genpanel()
     resultaat = gegevens(id_list, hgnc_genen, dict_genpanels)
+    print(resultaat)
     teruggave = ("   <table id=\"ResultTable\" style=\"width:777px; height: 400px;\" class=\"sortable-table\">"
                  + "   <thead>\n"
                  + "   <tr>\n"
                  + "   <th ><p1>ID</p1></th>\n"
                  + "   <th><p1>Title</p1></th>\n"
-                 + "   <th ><p1>Date</p1></th>\n"
+                 + "   <th ><p1>Date publication</p1></th>\n"
+                 + "   <th ><p1>Date last revised</p1></th>\n"
                  + "   <th ><p1>Gene</p1></th>\n"
                  + "   </tr>"
                  + "   </thead>")
@@ -37,11 +41,11 @@ def page():
         teruggave = teruggave + "<tr>"
         teruggave = teruggave + "<td>" \
                                 "<a href = \"https://pubmed.ncbi.nlm.nih.gov/" + str(a[0]) + "\" target=\"_blank\">" \
-                                                                                             "" + str(
-            a[0]) + "</a></td>"
+                                "" + str(a[0]) + "</a></td>"
         teruggave = teruggave + "<td><p2>" + str(a[1]) + "</p2></td>"
         teruggave = teruggave + "<td><p2>" + str(a[2]) + "</p2></td>"
         teruggave = teruggave + "<td><p2>" + str(a[3]) + "</p2></td>"
+        teruggave = teruggave + "<td><p2>" + str(a[4]) + "</p2></td>"
         teruggave = teruggave + "</tr>"
 
     teruggave = teruggave + "</table>"
@@ -93,7 +97,6 @@ def gegevens(id_list, hgnc_genen, dict_genpanels):
             gen = ""
             resultaatperhit.append(record['PMID'])
             resultaatperhit.append(record['TI'])
-            print("DP: " + record['DP'])
             datum_nieuw = dag(str(record['DP']))
             datum_compleet = datum(datum_nieuw)
             resultaatperhit.append(datum_compleet)
@@ -104,14 +107,36 @@ def gegevens(id_list, hgnc_genen, dict_genpanels):
             gevonden_genen, abstract = genen_genpanel(abstract, hgnc_genen)
             gevonden_genen = genen(gevonden_genen, abstract)
             gevonden_genpanels = aanwezige_genpanels(gevonden_genen, dict_genpanels)
-            for item in gevonden_genen:
+            hgnc_gevonden_genen = gen_namen(gevonden_genen)
+            for item in hgnc_gevonden_genen:
                 gen = gen + item + " "
             resultaatperhit.append(gen)
             resultaatperhit.append(gevonden_genpanels)
             resultaat.append(resultaatperhit)
-
     return resultaat
 
+def gen_namen(gevonden_genen):
+    try:
+        from urlparse import urlparse
+    except ImportError:
+        from urllib.parse import urlparse
+    hgnc_gevonden_genen = []
+    headers = {'Accept': 'application/json'}
+    for name in gevonden_genen:
+        uri = 'http://rest.genenames.org/search/'
+        path = name
+        target = urlparse(uri + path)
+        method = 'GET'
+        body = ''
+        h = http.Http()
+        response, content = h.request(target.geturl(), method, body, headers)
+        if response['status'] == '200':
+            data = json.loads(content)
+            print('Symbol:' + data['response']['docs'][0]['symbol'])
+            hgnc_gevonden_genen.append(data['response']['docs'][0]['symbol'])
+        else:
+            print('Error detected: ' + response['status'])
+    return hgnc_gevonden_genen
 
 def genpanel():
     hgnc_genen = []
