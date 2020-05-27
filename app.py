@@ -205,30 +205,42 @@ def datum_maken(datum_):
 
 
 def dag(date):
-    print(date)
-    dicht_dagen = {"1": "01", "2": "02", "3": "03", "4": "04", "5": "05", "6": "06", "7": "07", "8": "08", "9": "09"}
-    dagen = date.split(" ")
-    dag_ = dicht_dagen.get(dagen[2])
-    if dag_ is None:
-        datum_nieuw = dagen[0] + " " + dagen[1] + " " + dagen[2]
-    else:
-        datum_nieuw = dagen[0] + " " + dagen[1] + " " + dag_
+    try:
+        dicht_dagen = {"1": "01", "2": "02", "3": "03", "4": "04", "5": "05", "6": "06", "7": "07", "8": "08", "9": "09"}
+        dagen = date.split(" ")
+        dag_ = dicht_dagen.get(dagen[2])
+        if dag_ is None:
+            datum_nieuw = dagen[0] + " " + dagen[1] + " " + dagen[2]
+        else:
+            datum_nieuw = dagen[0] + " " + dagen[1] + " " + dag_
+    except IndexError:
+        try:
+            datum_nieuw = dagen[0] + " " + dagen[1]
+        except IndexError:
+            datum_nieuw = dagen[0]
 
     return datum_nieuw
 
 
 def datum(date):
-    dict_maanden = {"01": "Jan", "02": "Feb", "03": "Mrt", "04": "Apr", "05": "Mei", "06": "Jun", "07": "Jul",
-                    "08": "Aug", "09": "Sep", "10": "Okt", "11": "Nov", "12": "Dec"}
-    datum_ = date.split(" ")
-    maand = dict_maanden.get(datum_[1])
+    try:
+        dict_maanden = {"01": "Jan", "02": "Feb", "03": "Mrt", "04": "Apr", "05": "Mei", "06": "Jun", "07": "Jul",
+                        "08": "Aug", "09": "Sep", "10": "Okt", "11": "Nov", "12": "Dec"}
+        datum_ = date.split(" ")
+        maand = dict_maanden.get(datum_[1])
 
-    if maand is None:
-        datum_compleet = datum_[2] + "-" + datum_[1] + "-" + datum_[0]
-    else:
-        datum_compleet = datum_[2] + "-" + maand + "-" + datum_[0]
+        if maand is None:
+            datum_compleet = datum_[2] + "-" + datum_[1] + "-" + datum_[0]
+        else:
+            datum_compleet = datum_[2] + "-" + maand + "-" + datum_[0]
+    except IndexError:
+        try:
+            datum_compleet = datum_[1] + "-" + datum_[0]
+        except IndexError:
+            datum_compleet = datum_[0]
 
     return datum_compleet
+
 
 
 def aanwezige_genpanels(gevonden_genen, dict_genpanels):
