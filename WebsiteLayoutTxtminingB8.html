@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<link rel="stylesheet" href="styles.css">
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 body {font-size:16px;}
@@ -22,8 +23,8 @@ body {font-size:16px;}
   <div class="w3-bar-block">
     <a href="#" onclick="Page_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
     <a href="#services" onclick="Page_close()" class="w3-bar-item w3-button w3-hover-white">Pubmed Search Tool</a> 
-    <a href="#designers" onclick="Page_close()" class="w3-bar-item w3-button w3-hover-white">Members</a> 
-    <a href="#contact" onclick="Page_close()" class="w3-bar-item w3-button w3-hover-white">Information</a>
+    <a href="#designers" onclick="Page_close()" class="w3-bar-item w3-button w3-hover-white">Information</a> 
+    <a href="#contact" onclick="Page_close()" class="w3-bar-item w3-button w3-hover-white">Members</a>
   </div>
 </nav>
 
@@ -41,20 +42,26 @@ body {font-size:16px;}
 
   <!-- Header -->
   <div class="P-container" style="margin-top:80px" id="showcase">
-    <h1 class="w3-jumbo"><b>Welcome</b></h1>
+
+
+            <!-- <h1 class="w3-jumbo"><b>Welcome</b></h1> -->
+      <h1 class="w3-xxxlarge w3-text-blue"> Welcome <img src="https://www.unmc.edu/mmi/geneticslab/_images/Catalog-SingleGeneTesting-NGS-DNAmolecule-24261052.jpg" 
+        alt="logo" height="230px" width="" /> 
+  </div>
 	<!-- <p>Op deze webpagina vindt u een Pubmed Search Tool, een applicatie die in staat is om de literatuur van Pubmed<br> af te zoeken naar bepaalde zoekwoorden. De zoekwoorden zijn 
 	input van de gebruiker. De applicatie is in staat<br> genen te identificeren die gelinkt zijn aan bepaalde aandoeningen. De applicatie maakt gebruik van<br> data/text-mining technieken
 	voor het doorzoeken van de database. Deze applicatie is gemaakt in opdracht van <br> het Radboud UMC. Het doel van deze applicatie is dat biologen makkelijk de literatuur kunnen doornemen,
 	zonder <br>dat ze handmatig alle artikelen moeten controleren. De applicatie is zo ontworpen, dat deze te gebruiken is zonder<br> enige voorkennis of uiteg.  
-  </p> -->
-  <img src="https://library.maastrichtuniversity.nl/wp-content/uploads/2013/02/pubmed.jpg" style="float: right; margin: 5px 20px 0 0;"/>
-  <br><br><br><br><br>
-  
+  </p> -->  
+  <br> <br>
+  <br>
+
+  <div>
   In this application you will find a tool able to scan trough the (recent) literature<br> of the Pubmed Database. 
   The tool will search for <br>keywords that you can input in the application below. 
   The tool <br>identifies genes that are linked to the keywords and show the results below.
 <hr>
-
+  
   </div>
   
 
@@ -74,76 +81,92 @@ body {font-size:16px;}
     <p>Hier komt de Tool</p>
   </div>
   
-  <!-- Designers -->
+  <!-- Information -->
   <div class="P-container" id="designers" style="margin-top:75px">
-  <hr>
-
-    <h1 class="w3-xxxlarge w3-text-dark-grey"><b>Members</b></h1>
-    <hr style="width:50px;border:5px solid rgb(102, 102, 150)" class="w3-round">
-    <p>This application was developed by student of the HAN. Every member specialized in a certain part. </p>
-  </div>
-
-  <!-- The Team -->
-  <div class="w3-row-padding w3-grayscale">
-    <div class="w3-col m4 w3-margin-bottom">
-      <div class="w3-light-grey">
-        <div class="P-container">
-          <h3>Sanne Post</h3>
-          <p class="opacity">Bio-informatician / application</p>
-          <p>S.Post5@student.han.nl</p>
-          <p>Verhaaltje</p>
-        </div>
-      </div>
-    </div>
-    <div class="w3-col m4 w3-margin-bottom">
-      <div class="w3-light-grey">
-        <div class="P-container">
-          <h3>Inge van Vugt</h3>
-          <p class="opacity">Bio-informatician / text-mining</p>
-          <p>IMA.vanVugt@student.han.nl</p>
-          <p>Verhaaltje</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="w3-row-padding w3-grayscale">
-    <div class="w3-col m4 w3-margin-bottom">
-      <div class="w3-light-grey">
-        <div class="P-container">
-          <h3>Fabian Fransen</h3>
-          <p class="opacity">Bio-informatician / website</p>
-          <p>F.Fransen1@student.han.nl</p>		  
-          <p>quote</p>
-        </div>
-      </div>
-    </div>
-    <div class="w3-col m4 w3-margin-bottom">
-      <div class="w3-light-grey">
-        <div class="P-container">
-          <h3>Alexander Colin</h3>
-          <p class="opacity">Bio-informatician / text-mining</p>
-          <p>RMA.Colin@student.han.nl</p>
-          <p>Onderschrift</p>
-        </div>
-      </div>
-    </div>
-	
-	<div></div>
-  </div>
-  
-
-  <!-- Contact -->
-  <div class="P-container" id="contact" style="margin-top:75px">
   <hr>
 
     <h1 class="w3-xxxlarge w3-text-dark-grey"><b>Information</b></h1>
     <hr style="width:50px;border:5px solid rgb(102, 102, 150)" class="w3-round">
-    <p>To use the application, type in the keywords like the example below.  <br><br>
+
+    <p>To use the application, type in the keywords like the example below.  <br>
+      <p>
+      Example: effect of traffic-related air pollution on blood pressure
+      <br><br>
+      Gather separate concepts:
+      <br><br>
+          Blood pressure, hypertension
+          Vehicle exhaust, diesel exhaust, vehicle emissions, traffic, etc. 
+      <br>
+      Search 1: blood pressure OR hypertension
+      <br>
+      Search 2: exhaust OR emissions OR pollution OR diesel
+      <br>  
+      Search 3: vehicle* OR traffic </p><br>
+      <a href="https://guides.lib.uw.edu/hsl/MEDEX-search/pubmedsearch" target="_blank" title="pubmedsearch">More information about search queries</a><br><br>
       You will get the results below the search bar. These will include the genes found in the literature. 
-      The results will be displayed in a table, with the colums; Gene id, Date, Name, Hits. The results will refer to the articles of interest.
+      The results will be displayed in a table, with the colums; Gene id, Date, Name, Gene name. The results will refer to the articles of interest.
     </p>
 
   </div>
+
+  <!-- Designers -->
+  <div class="P-container" id="contact" style="margin-top:75px">
+    <hr>
+  
+      <h1 class="w3-xxxlarge w3-text-dark-grey"><b>Members</b></h1>
+      <hr style="width:50px;border:5px solid rgb(102, 102, 150)" class="w3-round">
+      <p>This application was developed by student of the HAN. Every member specialized in a certain part. </p>
+
+
+  
+    <!-- The Team -->
+    <div class="w3-row-padding w3-grayscale">
+      <div class="w3-col m4 w3-margin-bottom">
+        <div class="w3-light-grey">
+          <div class="P-container">
+            <h3>Sanne Post</h3>
+            <p class="opacity">Bio-informatician / application</p>
+            <p>S.Post5@student.han.nl</p>
+            <p>"Work for a cause, not for applause. Live life to express, not to impress."</p>
+          </div>
+        </div>
+      </div>
+      <div class="w3-col m4 w3-margin-bottom">
+        <div class="w3-light-grey">
+          <div class="P-container">
+            <h3>Inge van Vugt</h3>
+            <p class="opacity">Bio-informatician / text-mining</p>
+            <p>IMA.vanVugt@student.han.nl</p>
+            <p>"Life happens wherever you are, whether you make it or not"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w3-row-padding w3-grayscale">
+      <div class="w3-col m4 w3-margin-bottom">
+        <div class="w3-light-grey">
+          <div class="P-container">
+            <h3>Fabian Fransen</h3>
+            <p class="opacity">Bio-informatician / website</p>
+            <p>F.Fransen1@student.han.nl</p>		  
+            <p>"A little step for an informatician, a big step for biologists."</p>
+          </div>
+        </div>
+      </div>
+      <div class="w3-col m4 w3-margin-bottom">
+        <div class="w3-light-grey">
+          <div class="P-container">
+            <h3>Alexander Colin</h3>
+            <p class="opacity">Bio-informatician / text-mining</p>
+            <p>RMA.Colin@student.han.nl</p>
+            <p>"Doubt kils more dreams than failure ever will"</p>
+          </div>
+        </div>
+      </div>
+    
+    <div></div>
+    </div>
+    </div>
 
 <!-- End page content -->
 </div>
