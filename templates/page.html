@@ -8,240 +8,261 @@
 <link rel="stylesheet" href="../static/sortable-tables.min.css?version=1">
 <script src="../static/sortable-tables.min.js?version=1"></script>
 <style>
-body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
-body {font-size:16px;}
-.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
-.w3-half img:hover{opacity:1}
+    body, h1, h2, h3, h4, h5 {
+        font-family: "Poppins", sans-serif
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    .w3-half img {
+        margin-bottom: -6px;
+        margin-top: 16px;
+        opacity: 0.8;
+        cursor: pointer
+    }
+
+    .w3-half img:hover {
+        opacity: 1
+    }
 </style>
 <body>
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-blue w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
-  <a href="javascript:void(0)" onclick="Page_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
-  <div class="P-container">
-    <h3 class="w3-padding-64"><b>Pubmed<br>Search Tool</b></h3>
-  </div>
-  <div class="w3-bar-block">
-    <a href="#" onclick="Page_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
-    <a href="#services" onclick="Page_close()" class="w3-bar-item w3-button w3-hover-white">Pubmed Search Tool</a>
-    <a href="#designers" onclick="Page_close()" class="w3-bar-item w3-button w3-hover-white">Information</a>
-    <a href="#contact" onclick="Page_close()" class="w3-bar-item w3-button w3-hover-white">Members</a>
-  </div>
+<nav class="w3-sidebar w3-blue w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;"
+     id="mySidebar"><br>
+    <a href="javascript:void(0)" onclick="Page_close()" class="w3-button w3-hide-large w3-display-topleft"
+       style="width:100%;font-size:22px">Close Menu</a>
+    <div class="P-container">
+        <h3 class="w3-padding-64"><b>Pubmed<br>Search Tool</b></h3>
+    </div>
+    <div class="w3-bar-block">
+        <a href="#" onclick="Page_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
+        <a href="#services" onclick="Page_close()" class="w3-bar-item w3-button w3-hover-white">Pubmed Search Tool</a>
+        <a href="#designers" onclick="Page_close()" class="w3-bar-item w3-button w3-hover-white">Information</a>
+        <a href="#contact" onclick="Page_close()" class="w3-bar-item w3-button w3-hover-white">Members</a>
+    </div>
 </nav>
 
 <!-- Top menu on small screens -->
 <header class="w3-container w3-top w3-hide-large w3-blue w3-xlarge w3-padding">
-  <a href="javascript:void(0)" class="w3-button w3-blue w3-margin-right" onclick="Page_open()">☰</a>
-  <span>Pubmed Search Tool</span>
+    <a href="javascript:void(0)" class="w3-button w3-blue w3-margin-right" onclick="Page_open()">☰</a>
+    <span>Pubmed Search Tool</span>
 </header>
 
 <!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large" onclick="Page_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<div class="w3-overlay w3-hide-large" onclick="Page_close()" style="cursor:pointer" title="close side menu"
+     id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
 
-  <!-- Header -->
-  <div class="P-container" style="margin-top:80px" id="showcase">	  
-	<div class="container">
+    <!-- Header -->
+
+    <div class="P-container" style="margin-top:80px" id="showcase">
+        <div class="container">
 
 
             <!-- <h1 class="w3-jumbo"><b>Welcome</b></h1> -->
-       <img src="https://www.unmc.edu/mmi/geneticslab/_images/Catalog-SingleGeneTesting-NGS-DNAmolecule-24261052.jpg"
-        alt="logo" height="400px" width="1150" ><h1 class="w3-xxxlarge w3-text-blue"> 
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  
-            Welcome</h1>
-  </div>	    	    
-	<!-- <p>Op deze webpagina vindt u een Pubmed Search Tool, een applicatie die in staat is om de literatuur van Pubmed<br> af te zoeken naar bepaalde zoekwoorden. De zoekwoorden zijn
-	input van de gebruiker. De applicatie is in staat<br> genen te identificeren die gelinkt zijn aan bepaalde aandoeningen. De applicatie maakt gebruik van<br> data/text-mining technieken
-	voor het doorzoeken van de database. Deze applicatie is gemaakt in opdracht van <br> het Radboud UMC. Het doel van deze applicatie is dat biologen makkelijk de literatuur kunnen doornemen,
-	zonder <br>dat ze handmatig alle artikelen moeten controleren. De applicatie is zo ontworpen, dat deze te gebruiken is zonder<br> enige voorkennis of uiteg.
-  </p> -->
-  <br>
-  <hr>
-  <div>
-  <h4>
-  In this application you will find a tool able to scan trough the (recent) literature<br> of the Pubmed Database. 
-  The tool will search for keywords that you can <br>input in the application below. 
-  The tool identifies genes that are linked to<br> the keywords and show the results below.
-  </h4>	  
-	  
-<hr>
-
-  </div>
-
-
-  <!-- Modal for full size images on click-->
-  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
-    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
-    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-      <img id="img01" class="w3-image">
-      <p id="caption"></p>
-    </div>
-  </div>
-
-  <!-- Introductie -->
-  <!-- PubMed -->
-    <div class="P-container" id="services" style="margin-top:75px">
-        <h1 class="w3-xxxlarge w3-text-dark-grey"><b>Pubmed Search Tool</b></h1>
-        <hr style="width:50px;border:5px solid rgb(102, 102, 150)" class="w3-round">
-
-        <form method="POST">
-            <table width=100%>
-                <tr>
-                    <td align="center">
-                        <table width="600" border="0" class="table_home_page">
-                            <tr>
-                                <td colspan="3" align="center"></td>
-                            </tr>
-                            <tr>
-                                <td width="100"> &nbsp;</td>
-                                <td width="400">
-                                    <p2>PubMed query:</p2>
-                                    <textarea id="myTextarea" cols="65" rows="5" name="myTextarea"></textarea>
-                                </td>
-                                <td width="100"></td>
-                            </tr>
-                            <tr>
-                                <td width="100"> &nbsp;</td>
-                                <td width="400">
-                                    <p2>Start date (yyyy):</p2>
-				    &thinsp;
-                                    <input type="text" name="year" value="{{ year }}">
-                                    <br>
-                                    <p2>Gene:</p2>
-                                    &emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;
-                                    <input type="text" name="gene" value="{{ gene }}">
-                                </td>
-                                <td width="100"></td>
-                            </tr>
-                            <tr>
-                                <td width="100"></td>
-                                <td width="100">
-
-
-                                    <div id="formsubmitbutton">
-                                        <input type="submit" name="submitter" value="Submit"
-                                               onclick="ButtonClicked()">
-                                    </div>
-                                    <div id="buttonreplacement" style="margin-left:30px; display:none;">
-                                        <img src="/static/images/wait2.gif" alt="loading...">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3" valign="top" align="center">
-				    <hr>
-				    <br>
-					
-                                    <p2><u>Found data with the search query: </u> <br><br>{{ zoekwoord | safe }}</p2>
-                                    <br>
-                                    {{ teruggave | safe }}
-                                </td>
-                                <td>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </div>
-
-  <!-- Information -->
-  <div class="P-container" id="designers" style="margin-top:75px">
-  <hr>
-
-    <h1 class="w3-xxxlarge w3-text-dark-grey"><b>Information</b></h1>
-    <hr style="width:50px;border:5px solid rgb(102, 102, 150)" class="w3-round">
-
-    <p>To use the application, type in the keywords like the example below.  <br>
-      <p>
-      Example: effect of traffic-related air pollution on blood pressure
-      <br><br>
-      Gather separate concepts:
-      <br><br>
-          Blood pressure, hypertension
-          Vehicle exhaust, diesel exhaust, vehicle emissions, traffic, etc.
-      <br>
-      Search 1: blood pressure OR hypertension
-      <br>
-      Search 2: exhaust OR emissions OR pollution OR diesel
-      <br>
-      Search 3: vehicle* OR traffic </p><br>
-      <a href="https://guides.lib.uw.edu/hsl/MEDEX-search/pubmedsearch" target="_blank" title="pubmedsearch">More information about search queries</a><br><br>
-      You will get the results below the search bar. These will include the genes found in the literature.
-      The results will be displayed in a table, with the colums; Gene id, Date, Name, Gene name. You can click the column names to
-      sort the results. The results will refer to the articles of interest.
-    </p>
-
-  </div>
-
-  <!-- Designers -->
-  <div class="P-container" id="contact" style="margin-top:75px">
-    <hr>
-
-      <h1 class="w3-xxxlarge w3-text-dark-grey"><b>Members</b></h1>
-      <hr style="width:50px;border:5px solid rgb(102, 102, 150)" class="w3-round">
-      <p>This application was developed by student of the HAN. Every member specialized in a certain part. </p>
-
-
-
-    <!-- The Team -->
-    <div class="w3-row-padding w3-grayscale">
-      <div class="w3-col m4 w3-margin-bottom">
-        <div class="w3-light-grey">
-          <div class="P-container">
-            <h3>Sanne Post</h3>
-            <p class="opacity">Bio-informatician / application</p>
-            <p>S.Post5@student.han.nl</p>
-            <p>"Work for a cause, not for applause. Live life to express, not to impress."</p>
-          </div>
+            <img src="https://www.unmc.edu/mmi/geneticslab/_images/Catalog-SingleGeneTesting-NGS-DNAmolecule-24261052.jpg"
+                 alt="logo" height="400px" width="1150">
+            <h1 class="w3-xxxlarge w3-text-blue">
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                Welcome</h1>
         </div>
-      </div>
-      <div class="w3-col m4 w3-margin-bottom">
-        <div class="w3-light-grey">
-          <div class="P-container">
-            <h3>Inge van Vugt</h3>
-            <p class="opacity">Bio-informatician / text-mining</p>
-            <p>IMA.vanVugt@student.han.nl</p>
-            <p>"Life happens wherever you are, whether you make it or not"</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="w3-row-padding w3-grayscale">
-      <div class="w3-col m4 w3-margin-bottom">
-        <div class="w3-light-grey">
-          <div class="P-container">
-            <h3>Fabian Fransen</h3>
-            <p class="opacity">Bio-informatician / website</p>
-            <p>F.Fransen1@student.han.nl</p>
-            <p>"A little step for an informatician, a big step for biologists."</p>
-          </div>
-        </div>
-      </div>
-      <div class="w3-col m4 w3-margin-bottom">
-        <div class="w3-light-grey">
-          <div class="P-container">
-            <h3>Alexander Colin</h3>
-            <p class="opacity">Bio-informatician / text-mining</p>
-            <p>RMA.Colin@student.han.nl</p>
-            <p>"Sharing tea with a fascinating stranger is one of life's true delights."</p>
-          </div>
-        </div>
-      </div>
+        <!-- <p>Op deze webpagina vindt u een Pubmed Search Tool, een applicatie die in staat is om de literatuur van Pubmed<br> af te zoeken naar bepaalde zoekwoorden. De zoekwoorden zijn
+        input van de gebruiker. De applicatie is in staat<br> genen te identificeren die gelinkt zijn aan bepaalde aandoeningen. De applicatie maakt gebruik van<br> data/text-mining technieken
+        voor het doorzoeken van de database. Deze applicatie is gemaakt in opdracht van <br> het Radboud UMC. Het doel van deze applicatie is dat biologen makkelijk de literatuur kunnen doornemen,
+        zonder <br>dat ze handmatig alle artikelen moeten controleren. De applicatie is zo ontworpen, dat deze te gebruiken is zonder<br> enige voorkennis of uiteg.
+      </p> -->
+        <br>
+        <hr>
+        <br><br>
+        <div>
+            In this application you will find a tool able to scan trough the (recent) literature of the Pubmed
+            Database. The tool will search for keywords that you can input in the application below.
+            The tool identifies genes that are linked to the keywords and show the results below.
+            <hr>
 
-    <div></div>
-    </div>
+        </div>
+
+
+        <!-- Modal for full size images on click-->
+        <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+            <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+            <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+                <img id="img01" class="w3-image">
+                <p id="caption"></p>
+            </div>
+        </div>
+
+        <!-- Introductie -->
+        <!-- PubMed -->
+        <div class="P-container" id="services" style="margin-top:75px">
+            <h1 class="w3-xxxlarge w3-text-dark-grey"><b>Pubmed Search Tool</b></h1>
+            <hr style="width:50px;border:5px solid rgb(102, 102, 150)" class="w3-round">
+
+            <form method="POST">
+                <table width=100%>
+                    <tr>
+                        <td align="center">
+                            <table width="600" border="0" class="table_home_page">
+                                <tr>
+                                    <td colspan="3" align="center"></td>
+                                </tr>
+                                <tr>
+                                    <td width="100"> &nbsp;</td>
+                                    <td width="400">
+                                        <p2>PubMed query:</p2>
+                                        <textarea id="myTextarea" cols="65" rows="5" name="myTextarea"></textarea>
+                                    </td>
+                                    <td width="100"></td>
+                                </tr>
+                                <tr>
+                                    <td width="100"> &nbsp;</td>
+                                    <td width="400">
+                                        <p2>Start date (yyyy):</p2>
+                                        &thinsp;
+                                        <input type="text" name="year" value="{{ year }}">
+                                        <br>
+                                        <p2>Gene:</p2>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;
+                                        <input type="text" name="gene" value="{{ gene }}">
+                                    </td>
+                                    <td width="100"></td>
+                                </tr>
+                                <tr>
+                                    <td width="100"></td>
+                                    <td width="100">
+
+
+                                        <div id="formsubmitbutton">
+                                            <input type="submit" name="submitter" value="Submit"
+                                                   onclick="ButtonClicked()">
+                                        </div>
+                                        <div id="buttonreplacement" style="margin-left:30px; display:none;">
+                                            <img src="/static/images/wait2.gif" alt="loading...">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" valign="top" align="center">
+                                        <hr>
+                                        <br>
+
+                                        <p2><u>Found data with the search query: </u> <br><br>{{ zoekwoord | safe }}
+                                        </p2>
+                                        <br>
+                                        {{ teruggave | safe }}
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <!-- Information -->
+        <div class="P-container" id="designers" style="margin-top:75px">
+            <hr>
+
+            <h1 class="w3-xxxlarge w3-text-dark-grey"><b>Information</b></h1>
+            <hr style="width:50px;border:5px solid rgb(102, 102, 150)" class="w3-round">
+
+            <p>To use the application, type in the keywords like the example below. <br>
+            <p>
+                Example: effect of traffic-related air pollution on blood pressure
+                <br><br>
+                Gather separate concepts:
+                <br><br>
+                Blood pressure, hypertension
+                Vehicle exhaust, diesel exhaust, vehicle emissions, traffic, etc.
+                <br>
+                Search 1: blood pressure OR hypertension
+                <br>
+                Search 2: exhaust OR emissions OR pollution OR diesel
+                <br>
+                Search 3: vehicle* OR traffic </p><br>
+            <a href="https://guides.lib.uw.edu/hsl/MEDEX-search/pubmedsearch" target="_blank" title="pubmedsearch">More
+                information about search queries</a><br><br>
+            You will get the results below the search bar. These will include the genes found in the literature.
+            The results will be displayed in a table, with the colums; Gene id, Date, Name, Gene name. You can click the
+            column names to
+            sort the results. The results will refer to the articles of interest.
+            </p>
+
+        </div>
+
+        <!-- Designers -->
+        <div class="P-container" id="contact" style="margin-top:75px">
+            <hr>
+
+            <h1 class="w3-xxxlarge w3-text-dark-grey"><b>Members</b></h1>
+            <hr style="width:50px;border:5px solid rgb(102, 102, 150)" class="w3-round">
+            <p>This application was developed by student of the HAN. Every member specialized in a certain part. </p>
+
+
+            <!-- The Team -->
+            <div class="w3-row-padding w3-grayscale">
+                <div class="w3-col m4 w3-margin-bottom">
+                    <div class="w3-light-grey">
+                        <div class="P-container">
+                            <h3>Sanne Post</h3>
+                            <p class="opacity">Bio-informatician / application</p>
+                            <p>S.Post5@student.han.nl</p>
+                            <p>"Work for a cause, not for applause. Live life to express, not to impress."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-col m4 w3-margin-bottom">
+                    <div class="w3-light-grey">
+                        <div class="P-container">
+                            <h3>Inge van Vugt</h3>
+                            <p class="opacity">Bio-informatician / text-mining</p>
+                            <p>IMA.vanVugt@student.han.nl</p>
+                            <p>"Life happens wherever you are, whether you make it or not"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-row-padding w3-grayscale">
+                <div class="w3-col m4 w3-margin-bottom">
+                    <div class="w3-light-grey">
+                        <div class="P-container">
+                            <h3>Fabian Fransen</h3>
+                            <p class="opacity">Bio-informatician / website</p>
+                            <p>F.Fransen1@student.han.nl</p>
+                            <p>"A little step for an informatician, a big step for biologists."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-col m4 w3-margin-bottom">
+                    <div class="w3-light-grey">
+                        <div class="P-container">
+                            <h3>Alexander Colin</h3>
+                            <p class="opacity">Bio-informatician / text-mining</p>
+                            <p>RMA.Colin@student.han.nl</p>
+                            <p>"Sharing tea with a fascinating stranger is one of life's true delights."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div></div>
+            </div>
+        </div>
+
+        <!-- End page content -->
     </div>
 
-<!-- End page content -->
+    <!--Container -->
+    <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p
+            class="w3-right">Powered by <a href="https://specials.han.nl/sites/biocentre/" title="HAN" target="_blank"
+                                           class="w3-hover-opacity">HAN</a></p></div>
 </div>
-
-<!--Container -->
-<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://specials.han.nl/sites/biocentre/" title="HAN" target="_blank" class="w3-hover-opacity">HAN</a></p></div>
-
 <script>
 
     function ButtonClicked() {
@@ -295,6 +316,27 @@ body {font-size:16px;}
         var url = 'data:application/vnd.ms-excel,' + escape(html); // Set your html table into url
         elem.setAttribute("href", url);
         elem.setAttribute("download", "export.xls"); // Choose the file name
+        return false;
+    }
+
+    function exportToCSV(elem) {
+        var table = document.getElementById("ResultTable");
+        var html = table.outerHTML;
+        //alert (html);
+        html = replaceAll(html, ";", ",");																	//alle ; even aanpassen naar ,
+        html = html.replace(/(\r\n|\n|\r)/gm, "");															//verwijder alle newlines
+        html = html.replace(/<table.*?<\/thead>/g, '');														//Verwijder de kop
+        html = html.replace(/<(a|\/a|\/div|tbody|p|\/p|\/tr|\/p2|\/tbody|\/table)[^>]{0,}>/gm, ""); 		//verwijder heleboel overbodige tags
+        html = 'ID;Title;Date publication;Date last revised ;Gene' + html;									//Maak de header
+        html = replaceAll(html, "<tr>	   <td>", "\n");													//Vervang de eerste TR TD voor niks
+        html = replaceAll(html, "<tr><td>", "\n");													//Vervang de eerste TR TD voor niks
+        html = replaceAll(html, "</td>	   <td>", ";");														//Vervang TD voor een ;
+        html = replaceAll(html, "</td><td>", ";");															//Vervang TD voor een ;
+        html = replaceAll(html, "</td>", "");																	//Verwijder de laatset  /TD
+        {#alert (html);#}
+        var url = 'data:text/plain,' + escape(html);														// Set your html table into url
+        elem.setAttribute("href", url);
+        elem.setAttribute("download", "Export.csv");														// Choose the file name
         return false;
     }
 

@@ -30,11 +30,11 @@ def page():
     teruggave = ("   <table id=\"ResultTable\" style=\"width:777px; height: 400px;\" class=\"sortable-table\">"
                  + "   <thead>\n"
                  + "   <tr>\n"
-                 + "   <th ><p1>ID</p1></th>\n"
+                 + "   <th><p1>ID</p1></th>\n"
                  + "   <th><p1>Title</p1></th>\n"
-                 + "   <th ><p1>Date publication</p1></th>\n"
-                 + "   <th ><p1>Date last revised</p1></th>\n"
-                 + "   <th ><p1>Gene</p1></th>\n"
+                 + "   <th class=\"date-sort\"><p1>Date publication</p1></th>\n"
+                 + "   <th class=\"date-sort\"><p1>Date last revised</p1></th>\n"
+                 + "   <th><p1>Gene</p1></th>\n"
                  + "   </tr>"
                  + "   </thead>")
     for a in resultaat:
@@ -50,10 +50,11 @@ def page():
 
     teruggave = teruggave + "</table>"
     teruggave = teruggave + "<tr> <td colspan=4> <hr> <a id=\"downloadLink\" onclick=\"exportToExcel(this)\" style=\"cursor" \
-                            ": pointer;\"> <img src=\"../static/images/exelimage.jpeg\" onclick=\"exportToExcel(this)\" " \
-                            "title=\"Exporteer naar Excel.\"> Download for Excel <img" \
-                            " src=\"../static/images/exelimage.jpeg\" onclick=\"exportToExcel(this)\" " \
-                            "title=\"Exporteer naar Excel.\"> </a> </td> </tr>"
+                            ": pointer;\"> Download as excel: <img src=\"../static/images/exelimage.jpeg\" onclick=\"exportToExcel(this)\" " \
+                            "title=\"Exporteer naar Excel.\"> </a> <br> "\
+                            "<a id=\"downloadLink\" onclick=\"exportToCSV(this)\" style=\"cursor" \
+                            ": pointer;\">Download as CSV: <img src=\"../static/images/CSV-icon.png\" onclick=\"exportToCSV(this)\" " \
+                            "title=\"Exporteer naar CSV.\" width=\"16\"> </a> </td> </tr>"
 
     return render_template("page.html", zoekwoord=zoekwoord, teruggave=teruggave, year=year, gene=gene)
 
