@@ -42,21 +42,23 @@ body {font-size:16px;}
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
 
   <!-- Header -->
-  <div class="P-container" style="margin-top:80px" id="showcase">
+  <div class="P-container" style="margin-top:80px" id="showcase">	  
+	<div class="container">
 
 
             <!-- <h1 class="w3-jumbo"><b>Welcome</b></h1> -->
-      <h1 class="w3-xxxlarge w3-text-blue"> Welcome <img src="https://www.unmc.edu/mmi/geneticslab/_images/Catalog-SingleGeneTesting-NGS-DNAmolecule-24261052.jpg"
-        alt="logo" height="230px" width="" ></h1>
-  </div>
+       <img src="https://www.unmc.edu/mmi/geneticslab/_images/Catalog-SingleGeneTesting-NGS-DNAmolecule-24261052.jpg"
+        alt="logo" height="320px" width="" ><h1 class="w3-xxxlarge w3-text-blue"> 
+            &emsp;&emsp;&emsp;&emsp;&emsp;  
+            Welcome</h1>
+  </div>	    	    
 	<!-- <p>Op deze webpagina vindt u een Pubmed Search Tool, een applicatie die in staat is om de literatuur van Pubmed<br> af te zoeken naar bepaalde zoekwoorden. De zoekwoorden zijn
 	input van de gebruiker. De applicatie is in staat<br> genen te identificeren die gelinkt zijn aan bepaalde aandoeningen. De applicatie maakt gebruik van<br> data/text-mining technieken
 	voor het doorzoeken van de database. Deze applicatie is gemaakt in opdracht van <br> het Radboud UMC. Het doel van deze applicatie is dat biologen makkelijk de literatuur kunnen doornemen,
 	zonder <br>dat ze handmatig alle artikelen moeten controleren. De applicatie is zo ontworpen, dat deze te gebruiken is zonder<br> enige voorkennis of uiteg.
   </p> -->
-  <br> <br>
   <br>
-
+  <hr><br><br>
   <div>
   In this application you will find a tool able to scan trough the (recent) literature<br> of the Pubmed Database.
   The tool will search for <br>keywords that you can input in the application below.
@@ -101,9 +103,11 @@ body {font-size:16px;}
                                 <td width="100"> &nbsp;</td>
                                 <td width="400">
                                     <p2>Start date (yyyy):</p2>
+				    &thinsp;
                                     <input type="text" name="year" value="{{ year }}">
                                     <br>
                                     <p2>Gene:</p2>
+                                    &emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;
                                     <input type="text" name="gene" value="{{ gene }}">
                                 </td>
                                 <td width="100"></td>
@@ -124,7 +128,10 @@ body {font-size:16px;}
                             </tr>
                             <tr>
                                 <td colspan="3" valign="top" align="center">
-                                    <p2>Found data with the search query: <br>{{ zoekwoord | safe }}</p2>
+				    <hr>
+				    <br>
+					
+                                    <p2><u>Found data with the search query: </u> <br><br>{{ zoekwoord | safe }}</p2>
                                     <br>
                                     {{ teruggave | safe }}
                                 </td>
