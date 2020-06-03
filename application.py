@@ -147,7 +147,7 @@ def gen_namen(gevonden_genen):
 
 def genpanel():
     hgnc_genen = []
-    bestand = open("C:\Python\Blok8\Informatica_Project\B8azure6-testapp\B8azure6-testapp\GenPanels_merged_DG-2.17.0.txt", 'r')
+    bestand = open("GenPanels_merged_DG-2.17.0.txt", 'r')
     dict_genpanels = {}
     bestand.readline()
     for line in bestand:
