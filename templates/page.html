@@ -3,10 +3,12 @@
 <title>Textmining Web Application</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- all references used in the website-->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 <link rel="stylesheet" href="../static/sortable-tables.min.css?version=1">
 <script src="../static/sortable-tables.min.js?version=1"></script>
+<!-- Stylesheet for website layout -->
 <style>
     body, h1, h2, h3, h4, h5 {
         font-family: "Poppins", sans-serif
@@ -66,12 +68,13 @@
          The tool identifies genes that are linked to the keywords and show the results below.
         <hr>
         </div>
-        <!-- Introduction -->
+        <!-- The pubmed search tool
+        -->
     <div class="P-container" id="services" style="margin-top:75px">
         <h1 class="w3-xxxlarge w3-text-dark-grey"><b>Pubmed Search Tool</b></h1>
         <hr style="width:50px;border:5px solid rgb(102, 102, 150)" class="w3-round">
         <form method="POST">
-            <table width=100%>
+            <table width=100%> <!-- Create table for results -->                                                     
             <tr>
                 <td align="center">
                     <table width="600" border="0" class="table_home_page">
@@ -91,11 +94,11 @@
                     <td width="400">
                         <p2>Start date (yyyy):</p2>
                         &thinsp;
-                        <input type="text" name="year" value="{{ year }}">
+                        <input type="text" name="year" value="{{ year }}"> <!-- input user -->
                         <br>
                         <p2>Gene:</p2>
                         &emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;
-                        <input type="text" name="gene" value="{{ gene }}">
+                        <input type="text" name="gene" value="{{ gene }}"> <!-- input user -->
                     </td>
                     <td width="100"></td>
                 </tr>
@@ -116,7 +119,7 @@
                         <hr>
                         <br>
                         <p2>
-                            <u>Found data with the search query: </u> <br><br>{{ zoekwoord | safe }}
+                            <u>Found data with the search query: </u> <br><br>{{ zoekwoord | safe }} 
                         </p2>
                         <br>
                             {{ teruggave | safe }}
@@ -227,8 +230,8 @@
 </div>
 <script>
     function ButtonClicked() {
-        document.getElementById("formsubmitbutton").style.display = "none"; // to undisplay
-        document.getElementById("buttonreplacement").style.display = ""; // to display
+        document.getElementById("formsubmitbutton").style.display = "none";   // to undisplay
+        document.getElementById("buttonreplacement").style.display = "";      // to display
         return true;
     }
     var FirstLoading = true;
@@ -237,50 +240,50 @@
             FirstLoading = false;
             return;
         }
-        document.getElementById("formsubmitbutton").style.display = ""; // to display
-        document.getElementById("buttonreplacement").style.display = "none"; // to undisplay
+        document.getElementById("formsubmitbutton").style.display = "";       // to display
+        document.getElementById("buttonreplacement").style.display = "none";  // to undisplay
     }
-    // To disable restoring submit button, disable or delete next line.
+                                                                              // To disable restoring submit button, disable or delete next line.
     document.onfocus = RestoreSubmitButton;
-    // Script to open and close sidebar
-    function Page_open() {
-        document.getElementById("mySidebar").style.display = "block";
-        document.getElementById("myOverlay").style.display = "block";
+    
+    function Page_open() {                                                    // Script to open and close sidebar
+        document.getElementById("mySidebar").style.display = "block";         
+        document.getElementById("myOverlay").style.display = "block";         
     }
-    function Page_close() {
-        document.getElementById("mySidebar").style.display = "none";
-        document.getElementById("myOverlay").style.display = "none";
+    function Page_close() {   
+        document.getElementById("mySidebar").style.display = "none";        
+        document.getElementById("myOverlay").style.display = "none";        
     }
     function replaceAll(string, search, replace) {
-        return string.split(search).join(replace);
+        return string.split(search).join(replace);                            
     }
-    function exportToExcel(elem) {
+    function exportToExcel(elem) {                                            // Create Excel file from results
         var table = document.getElementById("ResultTable");
         var html = table.outerHTML;
         html = replaceAll(html, '>-<', '>0<');
-        var url = 'data:application/vnd.ms-excel,' + escape(html); // Set your html table into url
-        elem.setAttribute("href", url);
-        elem.setAttribute("download", "export.xls"); // Choose the file name
+        var url = 'data:application/vnd.ms-excel,' + escape(html);            // Set your html table into url
+        elem.setAttribute("href", url); 
+        elem.setAttribute("download", "export.xls");                          // Choose the file name
         return false;
     }
     function exportToCSV(elem) {
         var table = document.getElementById("ResultTable");
         var html = table.outerHTML;
         //alert (html);
-        html = replaceAll(html, ";", ",");																	//alle ; even aanpassen naar ,
-        html = html.replace(/(\r\n|\n|\r)/gm, "");															//verwijder alle newlines
-        html = html.replace(/<table.*?<\/thead>/g, '');														//Verwijder de kop
-        html = html.replace(/<(a|\/a|\/div|tbody|p|\/p|\/tr|\/p2|\/tbody|\/table)[^>]{0,}>/gm, ""); 		//verwijder heleboel overbodige tags
-        html = 'ID;Title;Date publication;Date last revised ;Gene' + html;									//Maak de header
-        html = replaceAll(html, "<tr>	   <td>", "\n");													//Vervang de eerste TR TD voor niks
-        html = replaceAll(html, "<tr><td>", "\n");													//Vervang de eerste TR TD voor niks
-        html = replaceAll(html, "</td>	   <td>", ";");														//Vervang TD voor een ;
-        html = replaceAll(html, "</td><td>", ";");															//Vervang TD voor een ;
-        html = replaceAll(html, "</td>", "");																	//Verwijder de laatset  /TD
+        html = replaceAll(html, ";", ",");																	      //replace ; with ,
+        html = html.replace(/(\r\n|\n|\r)/gm, "");															  //remove newlines
+        html = html.replace(/<table.*?<\/thead>/g, '');														//remove header
+        html = html.replace(/<(a|\/a|\/div|tbody|p|\/p|\/tr|\/p2|\/tbody|\/table)[^>]{0,}>/gm, ""); 		//remove unneccesary tags
+        html = 'ID;Title;Date publication;Date last revised ;Gene' + html;				//Maak de header
+        html = replaceAll(html, "<tr>	   <td>", "\n");													  //Replace the first TR TD with null
+        html = replaceAll(html, "<tr><td>", "\n");													      //Repace the first TR TD with null
+        html = replaceAll(html, "</td>	   <td>", ";");														//replace TD with  ;
+        html = replaceAll(html, "</td><td>", ";");															  //Repace TD with  ;
+        html = replaceAll(html, "</td>", "");																	    //remove all /TD
         {#alert (html);#}
-        var url = 'data:text/plain,' + escape(html);														// Set your html table into url
+        var url = 'data:text/plain,' + escape(html);														  // Set your html table into url
         elem.setAttribute("href", url);
-        elem.setAttribute("download", "Export.csv");														// Choose the file name
+        elem.setAttribute("download", "Export.csv");														  // Choose the file name
         return false;
     }
 </script>
