@@ -270,20 +270,20 @@
         var table = document.getElementById("ResultTable");
         var html = table.outerHTML;
         //alert (html);
-        html = replaceAll(html, ";", ",");																	      //replace ; with ,
-        html = html.replace(/(\r\n|\n|\r)/gm, "");															  //remove newlines
+        html = replaceAll(html, ";", ",");																	//replace ; with ,
+        html = html.replace(/(\r\n|\n|\r)/gm, "");															//remove newlines
         html = html.replace(/<table.*?<\/thead>/g, '');														//remove header
         html = html.replace(/<(a|\/a|\/div|tbody|p|\/p|\/tr|\/p2|\/tbody|\/table)[^>]{0,}>/gm, ""); 		//remove unneccesary tags
-        html = 'ID;Title;Date publication;Date last revised ;Gene' + html;				//Maak de header
-        html = replaceAll(html, "<tr>	   <td>", "\n");													  //Replace the first TR TD with null
-        html = replaceAll(html, "<tr><td>", "\n");													      //Repace the first TR TD with null
-        html = replaceAll(html, "</td>	   <td>", ";");														//replace TD with  ;
-        html = replaceAll(html, "</td><td>", ";");															  //Repace TD with  ;
-        html = replaceAll(html, "</td>", "");																	    //remove all /TD
+        html = 'ID;Title;Date publication;Date last revised ;Gene' + html;				                    //Make the header
+        html = replaceAll(html, "<tr>	   <td>", "\n");													//Replace the first TR TD with null
+        html = replaceAll(html, "<tr><td>", "\n");													        //Repace the first TR TD with null
+        html = replaceAll(html, "</td>	   <td>", ";");													    //replace TD with  ;
+        html = replaceAll(html, "</td><td>", ";");															//Repace TD with  ;
+        html = replaceAll(html, "</td>", "");																//remove all /TD
         {#alert (html);#}
-        var url = 'data:text/plain,' + escape(html);														  // Set your html table into url
+        var url = 'data:text/plain,' + escape(html);														// Set your html table into url
         elem.setAttribute("href", url);
-        elem.setAttribute("download", "Export.csv");														  // Choose the file name
+        elem.setAttribute("download", "Export.csv");														// Choose the file name
         return false;
     }
 </script>
