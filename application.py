@@ -78,7 +78,6 @@ def search_count(zoekwoord, startdate, gene, enddate):
         zoekterm = zoekwoord + " AND {}:{} [dp]".format(jaar_5, jaar)
     else:
         zoekterm = zoekwoord + " AND {}:{} [dp]".format(startdate, enddate)
-    print(zoekterm)
     ingevulde_genen = str(gene).split(" ")
     if len(gene) != 0:
         for gen in ingevulde_genen:
