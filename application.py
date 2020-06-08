@@ -78,12 +78,13 @@ def search_count(zoekwoord, startdate, gene, enddate):
         zoekterm = zoekwoord + " AND {}:{} [dp]".format(jaar_5, jaar)
     else:
         zoekterm = zoekwoord + " AND {}:{} [dp]".format(startdate, enddate)
+    print(zoekterm)
     ingevulde_genen = str(gene).split(" ")
     if len(gene) != 0:
         for gen in ingevulde_genen:
             zoekterm = zoekterm + " AND {}".format(gen)
     Entrez.email = "Your.Name.Here@example.org"
-    handle = Entrez.esearch(db="nucleotide", term=zoekterm, idtype="acc")
+    handle = Entrez.esearch(db="pubmed", term=zoekterm, idtype="acc")
     record = Entrez.read(handle)
 
     count = int(record['Count'])
@@ -102,11 +103,11 @@ def search_artikel(zoekterm, count):
 
 def gegevens(id_list, hgnc_genen, dict_genpanels):
     resultaat = []
-    try:
-        for i in range(len(id_list)):
-            handle = Entrez.efetch(db="pubmed", id=id_list[i], rettype="medline")
-            records = Medline.parse(handle)
-            for record in records:
+    for i in range(len(id_list)):
+        handle = Entrez.efetch(db="pubmed", id=id_list[i], rettype="medline")
+        records = Medline.parse(handle)
+        for record in records:
+            try:
                 resultaatperhit = []
                 gen = ""
                 resultaatperhit.append(record['PMID'])
@@ -124,8 +125,23 @@ def gegevens(id_list, hgnc_genen, dict_genpanels):
                 gevonden_genpanels = aanwezige_genpanels(hgnc_gevonden_genen, dict_genpanels)
                 resultaatperhit.append(gevonden_genpanels)
                 resultaat.append(resultaatperhit)
-    except KeyError:
-        pass
+            except KeyError:
+                try:
+                    datum_nieuw = datum_maken(str(record['LR']))
+                except KeyError:
+                    datum_compleet = datum(datum_nieuw)
+                    resultaatperhit.append(datum_compleet)
+                    abstract = record['AB']
+                    gevonden_genen, abstract = genen_genpanel(abstract, hgnc_genen)
+                    gevonden_genen = genen(gevonden_genen, abstract)
+                    hgnc_gevonden_genen = gen_namen(gevonden_genen)
+                    gevonden_genpanels = aanwezige_genpanels(hgnc_gevonden_genen, dict_genpanels)
+                    resultaatperhit.append(gevonden_genpanels)
+                    resultaat.append(resultaatperhit)
+                try:
+                    abstract = record['AB']
+                except KeyError:
+                    pass
 
     return resultaat
 
