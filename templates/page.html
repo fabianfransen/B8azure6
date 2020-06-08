@@ -8,12 +8,6 @@
 <link rel="stylesheet" href="../static/sortable-tables.min.css?version=1">
 <script src="../static/sortable-tables.min.js?version=1"></script>
 <style>
-
-   input {
-    display: block;
-    box-sizing: border-box;
-}
-
     body, h1, h2, h3, h4, h5 {
         font-family: "Poppins", sans-serif
     }
@@ -73,8 +67,9 @@
 
             <!-- <h1 class="w3-jumbo"><b>Welcome</b></h1> -->
             <img src="https://www.unmc.edu/mmi/geneticslab/_images/Catalog-SingleGeneTesting-NGS-DNAmolecule-24261052.jpg"
-                 alt="logo" height="auto" width="100%">
-            <h1 class="w3-xxxlarge w3-text-blue" align="center">
+                 alt="logo" height="400px" width="1150">
+            <h1 class="w3-xxxlarge w3-text-blue">
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 Welcome</h1>
         </div>
         <!-- <p>Op deze webpagina vindt u een Pubmed Search Tool, een applicatie die in staat is om de literatuur van Pubmed<br> af te zoeken naar bepaalde zoekwoorden. De zoekwoorden zijn
@@ -113,7 +108,7 @@
                 <table width=100%>
                     <tr>
                         <td align="center">
-                            <table width="600" border="0" class="table_home_page">
+                            <table width="600" border="0" class="table_home_page" >
                                 <tr>
                                     <td colspan="3" align="center"></td>
                                 </tr>
@@ -121,19 +116,23 @@
                                     <td width="100"> &nbsp;</td>
                                     <td width="400">
                                         <p2>PubMed query:</p2>
-                                        <textarea id="myTextarea" cols="65" rows="5" name="myTextarea"
-                                                  value="{{ zoekwoord }}"></textarea>
+                                        <textarea id="myTextarea" cols="65" rows="5" name="myTextarea"></textarea>
                                     </td>
                                     <td width="100"></td>
                                 </tr>
                                 <tr>
                                     <td width="100"> &nbsp;</td>
                                     <td width="400">
-                                        <p2>Start date (yyyy/mm):</p2>
+                                        <p2>Start date (yyyy):</p2>
+                                        &thinsp;
                                         <input type="text" name="startdate" value="{{ startdate }}">
-                                        <p2>End date (yyyy/mm):</p2>
+                                        <br>
+                                        <p2>End date (yyyy):</p2>
+                                        &thinsp;
                                         <input type="text" name="enddate" value="{{ enddate }}">
+                                        <br>
                                         <p2>Gene:</p2>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;
                                         <input type="text" name="gene" value="{{ gene }}">
                                     </td>
                                     <td width="100"></td>
