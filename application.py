@@ -18,54 +18,67 @@ def hello_world():
 @app.route('/', methods=['GET', 'POST'])
 def page():
     # searchword = request.form["myTextarea"]
-    year = request.form["year"]
+    startdate = request.form["startdate"]
+    enddate = request.form["enddate"]
+
     gene = request.form["gene"]
     # print(searchword)
     zoekwoord = request.form["myTextarea"]
-    count, zoekterm = search_count(zoekwoord, year, gene)
+    count, zoekterm = search_count(zoekwoord, startdate, gene, enddate)
     id_list = search_artikel(zoekterm, count)
     hgnc_genen, dict_genpanels = genpanel()
     resultaat = gegevens(id_list, hgnc_genen, dict_genpanels)
 
-    teruggave = ("   <table id=\"ResultTable\" style=\"width:777px; height: 400px;\" class=\"sortable-table\">"
+    teruggave = ("   <table id=\"ResultTable\" style=\"width:777px; height: 400px; border-collapse: collapse; "
+                 "padding: 10px;\""
+                 " class=\"sortable-table\" border=\"1\" border-collapse=\"collapse\">"
                  + "   <thead>\n"
                  + "   <tr>\n"
-                 + "   <th><p1>ID</p1></th>\n"
-                 + "   <th><p1>Title</p1></th>\n"
-                 + "   <th class=\"date-sort\"><p1>Date publication</p1></th>\n"
-                 + "   <th class=\"date-sort\"><p1>Date last revised</p1></th>\n"
-                 + "   <th><p1>Gene</p1></th>\n"
+                 + "   <th style=\"padding: 10px;\"><p1>ID</p1></th>\n"
+                 + "   <th style=\"padding: 10px;\"><p1>Title</p1></th>\n"
+                 + "   <th style=\"padding: 10px;\" class=\"date-sort\"><p1>Date publication</p1></th>\n"
+                 + "   <th style=\"padding: 10px;\" class=\"date-sort\"><p1>Date last revised</p1></th>\n"
+                 + "   <th style=\"padding: 10px;\"><p1>Gene</p1></th>\n"
                  + "   </tr>"
                  + "   </thead>")
     for a in resultaat:
         teruggave = teruggave + "<tr>"
-        teruggave = teruggave + "<td>" \
+        teruggave = teruggave + "<td style=\"padding: 10px;\">" \
                                 "<a href = \"https://pubmed.ncbi.nlm.nih.gov/" + str(a[0]) + "\" target=\"_blank\">" \
-                                "" + str(a[0]) + "</a></td>"
-        teruggave = teruggave + "<td><p2>" + str(a[1]) + "</p2></td>"
-        teruggave = teruggave + "<td><p2>" + str(a[2]) + "</p2></td>"
-        teruggave = teruggave + "<td><p2>" + str(a[3]) + "</p2></td>"
-        teruggave = teruggave + "<td><p2>" + str(a[4]) + "</p2></td>"
+                                                                                             "" + str(
+            a[0]) + "</a></td>"
+        teruggave = teruggave + "<td style=\"padding: 10px;\"><p2>" + str(a[1]) + "</p2></td>"
+        teruggave = teruggave + "<td style=\"padding: 10px;\"><p2>" + str(a[2]) + "</p2></td>"
+        teruggave = teruggave + "<td style=\"padding: 10px;\"><p2>" + str(a[3]) + "</p2></td>"
+        teruggave = teruggave + "<td style=\"padding: 10px;\"><p2>" + str(a[4]) + "</p2></td>"
         teruggave = teruggave + "</tr>"
 
     teruggave = teruggave + "</table>"
     teruggave = teruggave + "<tr> <td colspan=4> <hr> <a id=\"downloadLink\" onclick=\"exportToExcel(this)\" style=\"cursor" \
                             ": pointer;\"> Download as excel: <img src=\"../static/images/exelimage.jpeg\" onclick=\"exportToExcel(this)\" " \
-                            "title=\"Exporteer naar Excel.\"> </a> <br> "\
+                            "title=\"Exporteer naar Excel.\"> </a> <br> " \
                             "<a id=\"downloadLink\" onclick=\"exportToCSV(this)\" style=\"cursor" \
                             ": pointer;\">Download as CSV: <img src=\"../static/images/CSV-icon.png\" onclick=\"exportToCSV(this)\" " \
                             "title=\"Exporteer naar CSV.\" width=\"16\"> </a> </td> </tr>"
 
-    return render_template("page.html", zoekwoord=zoekwoord, teruggave=teruggave, year=year, gene=gene)
+    return render_template("page.html", zoekwoord=zoekwoord, teruggave=teruggave, startdate=startdate,
+                           enddate=enddate, gene=gene)
 
 
-def search_count(zoekwoord, year, gene):
+def search_count(zoekwoord, startdate, gene, enddate):
     x = datetime.datetime.now()
     jaar = x.strftime("%Y")
-    if year == "":
-        zoekterm = zoekwoord + " AND 1950:{} [dp]".format(jaar)
+    maand = x.strftime("%m")
+    jaar_5 = int(x.strftime("%Y")) - 5
+    if startdate == "" and enddate != "":
+        zoekterm = zoekwoord + " AND {}:{} [dp]".format(jaar_5, enddate)
+    elif enddate == "" and startdate != "":
+        zoekterm = zoekwoord + " AND {}:{}/{} [dp]".format(startdate, jaar, maand)
+    elif startdate == "" and enddate == "":
+        zoekterm = zoekwoord + " AND {}:{} [dp]".format(jaar_5, jaar)
     else:
-        zoekterm = zoekwoord + " AND {}:{} [dp]".format(year, jaar)
+        zoekterm = zoekwoord + " AND {}:{} [dp]".format(startdate, enddate)
+    print(zoekterm)
     ingevulde_genen = str(gene).split(" ")
     if len(gene) != 0:
         for gen in ingevulde_genen:
@@ -136,7 +149,7 @@ def gen_namen(gevonden_genen):
         if response['status'] == '200':
             data = json.loads(content)
             try:
-                print('Symbol:' + data['response']['docs'][0]['symbol'])
+                # print('Symbol:' + data['response']['docs'][0]['symbol'])
                 hgnc_gevonden_genen.append(data['response']['docs'][0]['symbol'])
             except IndexError:
                 print("Gene removed")
@@ -147,7 +160,7 @@ def gen_namen(gevonden_genen):
 
 def genpanel():
     hgnc_genen = []
-    bestand = open("GenPanels_merged_DG-2.17.0.txt", 'r')
+    bestand = open("C:\Python\Blok8\Informatica_Project\B8azure6-testapp\B8azure6-testapp\GenPanels_merged_DG-2.17.0.txt", 'r')
     dict_genpanels = {}
     bestand.readline()
     for line in bestand:
@@ -253,9 +266,9 @@ def aanwezige_genpanels(gevonden_genen, dict_genpanels):
     gevonden_genpanels = ""
     for gen in gevonden_genen:
         if dict_genpanels.get(gen) is not None:
-            gevonden_genpanels = gevonden_genpanels + gen + "(" + dict_genpanels.get(gen) + ")  "
+            gevonden_genpanels = gevonden_genpanels + "<b>" + gen + "</b>" + " (" + dict_genpanels.get(gen) + ")  " + "<br>"
         else:
-            gevonden_genpanels = gevonden_genpanels + gen + "  "
+            gevonden_genpanels = gevonden_genpanels + "<b>" + gen + "</b>" + "  " + "<br>"
     gevonden_genpanels = gevonden_genpanels.replace("\n", "")
 
     return gevonden_genpanels
