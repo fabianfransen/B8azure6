@@ -189,6 +189,13 @@ def gegevens(id_list, hgnc_genen, dict_genpanels):
 
 
 def gen_namen(gevonden_genen):
+    """ Deze functie maakt een connectie met de REST genemames.org web-service. Vervolgens wordt er gecheckt 
+    of de gevonden_genen lijst genen bevat, door de items in de list in te voeren als search. Als de gevonden_genen lijst 
+    genen bevat stuurt de REST server de genen met HGNC benaming terug en wordt er een lijst gemaakt, waarin de HGNC genen staan.
+    
+    :param gevonden_genen: lijst van genen gevonden uit de artikelen
+    :return hgnc_genen: lijst met alle aanwezige HGNC genen in het genpanel
+    """
     try:
         from urlparse import urlparse
     except ImportError:
@@ -196,18 +203,17 @@ def gen_namen(gevonden_genen):
     hgnc_gevonden_genen = []
     headers = {'Accept': 'application/json'}
     for name in gevonden_genen:
-        uri = 'http://rest.genenames.org/search/'
-        path = name
-        target = urlparse(uri + path)
+        uri = 'http://rest.genenames.org/search/'   # url path van REST gennames web-service
+        path = name     # gen in gevonde_genen lijst
+        target = urlparse(uri + path)   # gehele url path, waarmee connectie wordt gemaakt
         method = 'GET'
         body = ''
         h = http.Http()
         response, content = h.request(target.geturl(), method, body, headers)
-        if response['status'] == '200':
-            data = json.loads(content)
+        if response['status'] == '200': # parsed met json module
+            data = json.loads(content)  # json reply dat de HGNC naam bevat
             try:
-                # print('Symbol:' + data['response']['docs'][0]['symbol'])
-                hgnc_gevonden_genen.append(data['response']['docs'][0]['symbol'])
+                hgnc_gevonden_genen.append(data['response']['docs'][0]['symbol']) # HGCC naam in een lijst
             except IndexError:
                  print("Gene removed")
         else:
