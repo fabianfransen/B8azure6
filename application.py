@@ -155,7 +155,8 @@ def gegevens(id_list, hgnc_genen, dict_genpanels):
                         pass
                     except UnboundLocalError:
                         pass
-
+                    except ServerNotFoundError:
+                        pass
     return resultaat
 
 
