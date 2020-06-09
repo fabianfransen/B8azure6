@@ -116,6 +116,7 @@ def gegevens(id_list, hgnc_genen, dict_genpanels):
         records = Medline.parse(handle)
         for record in records:
             try:
+                print(record)
                 resultaatperhit = []
                 gen = ""
                 resultaatperhit.append(record['PMID'])
@@ -137,19 +138,20 @@ def gegevens(id_list, hgnc_genen, dict_genpanels):
                 try:
                     datum_nieuw = datum_maken(str(record['LR']))
                 except KeyError:
-                    datum_compleet = datum(datum_nieuw)
-                    resultaatperhit.append(datum_compleet)
-                    abstract = record['AB']
-                    gevonden_genen, abstract = genen_genpanel(abstract, hgnc_genen)
-                    gevonden_genen = genen(gevonden_genen, abstract)
-                    hgnc_gevonden_genen = gen_namen(gevonden_genen)
-                    gevonden_genpanels = aanwezige_genpanels(hgnc_gevonden_genen, dict_genpanels)
-                    resultaatperhit.append(gevonden_genpanels)
-                    resultaat.append(resultaatperhit)
-                try:
-                    abstract = record['AB']
-                except KeyError:
-                    pass
+                    try:
+                        datum_compleet = datum(datum_nieuw)
+                        resultaatperhit.append(datum_compleet)
+                        abstract = record['AB']
+                        gevonden_genen, abstract = genen_genpanel(abstract, hgnc_genen)
+                        gevonden_genen = genen(gevonden_genen, abstract)
+                        hgnc_gevonden_genen = gen_namen(gevonden_genen)
+                        gevonden_genpanels = aanwezige_genpanels(hgnc_gevonden_genen, dict_genpanels)
+                        resultaatperhit.append(gevonden_genpanels)
+                        resultaat.append(resultaatperhit)
+                    except KeyError:
+                        pass
+                    except UnboundLocalError:
+                        pass
 
     return resultaat
 
