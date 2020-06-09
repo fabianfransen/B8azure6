@@ -12,11 +12,14 @@ app = Flask(__name__)
 def hello_world():
     zoekwoord = ""
     teruggave = ""
+    # print("helloworld 1")
     return render_template('page.html', zoekwoord=zoekwoord, teruggave=teruggave)
 
 
 @app.route('/', methods=['GET', 'POST'])
 def page():
+    # print("helloworld 2")
+
     # searchword = request.form["myTextarea"]
     startdate = request.form["startdate"]
     enddate = request.form["enddate"]
@@ -86,7 +89,7 @@ def search_count(zoekwoord, startdate, gene, enddate):
         zoekterm = zoekwoord + " AND {}:{} [dp]".format(jaar_5, jaar)
     else:
         zoekterm = zoekwoord + " AND {}:{} [dp]".format(startdate, enddate)
-    print(zoekterm)
+    # print(zoekterm)
     ingevulde_genen = str(gene).split(" ")
     if len(gene) != 0:
         for gen in ingevulde_genen:
@@ -177,7 +180,7 @@ def gen_namen(gevonden_genen):
                 # print('Symbol:' + data['response']['docs'][0]['symbol'])
                 hgnc_gevonden_genen.append(data['response']['docs'][0]['symbol'])
             except IndexError:
-                print("Gene removed")
+                 print("Gene removed")
         else:
             print('Error detected: ' + response['status'])
     return hgnc_gevonden_genen

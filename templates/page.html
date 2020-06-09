@@ -336,9 +336,14 @@
         html = 'ID;Title;Date publication;Date last revised ;Gene' + html;									//Maak de header
         html = replaceAll(html, "<tr>	   <td>", "\n");													//Vervang de eerste TR TD voor niks
         html = replaceAll(html, "<tr><td>", "\n");													//Vervang de eerste TR TD voor niks
+        html = replaceAll(html, "<tr><td style=\"padding: 10px,\">", "\n");													//Vervang de eerste TR TD voor niks
+        html = replaceAll(html, "<td style=\"padding: 10px,\">", ";");													//Vervang de eerste TR TD voor niks
         html = replaceAll(html, "</td>	   <td>", ";");														//Vervang TD voor een ;
         html = replaceAll(html, "</td><td>", ";");															//Vervang TD voor een ;
         html = replaceAll(html, "</td>", "");																	//Verwijder de laatset  /TD
+        html = replaceAll(html, "<b>", "");																	//Verwijder vetgedrukt
+        html = replaceAll(html, "</b>", "");																	//Verwijder vergedrukt
+        html = replaceAll(html, "<br>", "\t");																	//Vervang breakline met tab in csv file
         {#alert (html);#}
         var url = 'data:text/plain,' + escape(html);														// Set your html table into url
         elem.setAttribute("href", url);
