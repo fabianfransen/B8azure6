@@ -3,25 +3,24 @@
 <title>Textmining Web Application</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- all references used in the website-->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 <link rel="stylesheet" href="../static/sortable-tables.min.css?version=1">
 <script src="../static/sortable-tables.min.js?version=3"></script>
+   <!-- Stylesheet for website layout -->
 <style>
 
    input {
     display: block;
     box-sizing: border-box;
 }
-
     body, h1, h2, h3, h4, h5 {
         font-family: "Poppins", sans-serif
     }
-
     body {
         font-size: 16px;
     }
-
 
     .w3-half img {
         margin-bottom: -6px;
@@ -29,7 +28,6 @@
         opacity: 0.8;
         cursor: pointer
     }
-
     .w3-half img:hover {
         opacity: 1
     }
@@ -62,26 +60,17 @@
 <div class="w3-overlay w3-hide-large" onclick="Page_close()" style="cursor:pointer" title="close side menu"
      id="myOverlay"></div>
 
-<!-- !PAGE CONTENT! -->
+<!-- Page content -->
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
 
     <!-- Header -->
-
     <div class="P-container" style="margin-top:80px" id="showcase">
         <div class="container">
-
-
-            <!-- <h1 class="w3-jumbo"><b>Welcome</b></h1> -->
             <img src="https://www.unmc.edu/mmi/geneticslab/_images/Catalog-SingleGeneTesting-NGS-DNAmolecule-24261052.jpg"
                  alt="logo" height="auto" width="100%">
             <h1 class="w3-xxxlarge w3-text-blue" align="center">
                 Welcome</h1>
         </div>
-        <!-- <p>Op deze webpagina vindt u een Pubmed Search Tool, een applicatie die in staat is om de literatuur van Pubmed<br> af te zoeken naar bepaalde zoekwoorden. De zoekwoorden zijn
-        input van de gebruiker. De applicatie is in staat<br> genen te identificeren die gelinkt zijn aan bepaalde aandoeningen. De applicatie maakt gebruik van<br> data/text-mining technieken
-        voor het doorzoeken van de database. Deze applicatie is gemaakt in opdracht van <br> het Radboud UMC. Het doel van deze applicatie is dat biologen makkelijk de literatuur kunnen doornemen,
-        zonder <br>dat ze handmatig alle artikelen moeten controleren. De applicatie is zo ontworpen, dat deze te gebruiken is zonder<br> enige voorkennis of uiteg.
-      </p> -->
         <br>
         <hr>
         <br><br>
@@ -93,23 +82,13 @@
 
         </div>
 
-
-        <!-- Modal for full size images on click-->
-        <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
-            <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
-            <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-                <img id="img01" class="w3-image">
-                <p id="caption"></p>
-            </div>
-        </div>
-
-        <!-- Introductie -->
-        <!-- PubMed -->
+         <!-- The pubmed search tool  --> 
         <div class="P-container" id="services" style="margin-top:75px">
             <h1 class="w3-xxxlarge w3-text-dark-grey"><b>Pubmed Search Tool</b></h1>
             <hr style="width:50px;border:5px solid rgb(102, 102, 150)" class="w3-round">
 
             <form method="POST">
+               <!-- create table for results -->
                 <table width=100%>
                     <tr>
                         <td align="center">
@@ -130,11 +109,11 @@
                                     <td width="100"> &nbsp;</td>
                                     <td width="400">
                                         <p2>Start date (yyyy/mm):</p2>
-                                        <input type="text" name="startdate" value="{{ startdate }}">
+                                        <input type="text" name="startdate" value="{{ startdate }}"> <!-- input user -->
                                         <p2>End date (yyyy/mm):</p2>
-                                        <input type="text" name="enddate" value="{{ enddate }}">
+                                        <input type="text" name="enddate" value="{{ enddate }}"> <!-- input user -->
                                         <p2>Gene:</p2>
-                                        <input type="text" name="gene" value="{{ gene }}">
+                                        <input type="text" name="gene" value="{{ gene }}"> <!-- input user -->
                                     </td>
                                     <td width="100"></td>
                                 </tr>
@@ -172,13 +151,11 @@
             </form>
         </div>
 
-        <!-- Information -->
+        <!-- Information, how to use the search tool -->
         <div class="P-container" id="designers" style="margin-top:75px">
             <hr>
-
             <h1 class="w3-xxxlarge w3-text-dark-grey"><b>Information</b></h1>
             <hr style="width:50px;border:5px solid rgb(102, 102, 150)" class="w3-round">
-
             <p>To use the application, type in the keywords like the example below. <br>
             <p>
                 Example: effect of traffic-related air pollution on blood pressure
@@ -200,17 +177,14 @@
             column names to
             sort the results. The results will refer to the articles of interest.
             </p>
-
         </div>
 
         <!-- Designers -->
         <div class="P-container" id="contact" style="margin-top:75px">
             <hr>
-
             <h1 class="w3-xxxlarge w3-text-dark-grey"><b>Members</b></h1>
             <hr style="width:50px;border:5px solid rgb(102, 102, 150)" class="w3-round">
             <p>This application was developed by student of the HAN. Every member specialized in a certain part. </p>
-
 
             <!-- The Team -->
             <div class="w3-row-padding w3-grayscale">
@@ -256,7 +230,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div></div>
             </div>
         </div>
@@ -269,8 +242,8 @@
             class="w3-right">Powered by <a href="https://specials.han.nl/sites/biocentre/" title="HAN" target="_blank"
                                            class="w3-hover-opacity">HAN</a></p></div>
 </div>
+   
 <script>
-
     function ButtonClicked() {
         document.getElementById("formsubmitbutton").style.display = "none"; // to undisplay
         document.getElementById("buttonreplacement").style.display = ""; // to display
@@ -278,7 +251,7 @@
     }
 
     var FirstLoading = true;
-
+   
     function RestoreSubmitButton() {
         if (FirstLoading) {
             FirstLoading = false;
