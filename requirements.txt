@@ -9,4 +9,4 @@ MyApplication==0.1.0
 bio==0.1.0
 httplib2==0.18.1
 pip==19.0.3
-setuptools==40.8.0
+setuptools==65.5.1
